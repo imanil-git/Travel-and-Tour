@@ -1,6 +1,12 @@
-import "./App.css"
+import "./App.css";
+import { AppRoutes } from "./routes/AppRoutes";
+
 function App() {
-  return <div className="text-3xl text-semibold underline text-blue-900">Tour and Travels</div>;
+  return (
+    <>
+      <AppRoutes />
+    </>
+  );
 }
 
 export default App;
