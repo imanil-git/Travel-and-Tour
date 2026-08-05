@@ -4,7 +4,7 @@ import Logo from "../../assets/Tour.webp";
 
 export const Header = () => {
   return (
-    <nav className="bg-blue-400/90 fixed w-full z-20 top-0 start-0 border-b border-default">
+    <nav className="bg-black/50 fixed w-full z-20 top-0 start-0 border-b border-default">
       <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
         <Link
           to="/"

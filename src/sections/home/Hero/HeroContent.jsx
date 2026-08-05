@@ -9,6 +9,11 @@ export const HeroContent = () => {
       <h1 className="text-6xl font-bold leading-tight">
         Discover Your Next Adventure
       </h1>
+
+      <p className="mt-6 text-lg text-gray-200">
+        Discover Breathtaking mountains, peaceful lakes, anicent temples, and
+        unforgettable adventures.
+      </p>
     </div>
   );
 };
