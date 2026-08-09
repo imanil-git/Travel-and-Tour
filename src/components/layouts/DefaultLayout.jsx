@@ -6,11 +6,15 @@ import { Outlet } from "react-router-dom";
 export const DefaultLayout = () => {
   return (
     <div className="flex min-h-screen flex-col">
-      {/* Header */}
-      <Header />
+      <div className="relative">
+        {/* Header */}
+        <Header />
 
-      {/* Main */}
-      <main className="flex-1 pt-16"><Outlet /></main>
+        {/* Main */}
+        <main>
+          <Outlet />
+        </main>
+      </div>
 
       {/* Footer */}
       <Footer />
