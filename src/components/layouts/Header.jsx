@@ -1,105 +1,59 @@
 import React from "react";
 import { Link, NavLink } from "react-router-dom";
 import Logo from "../../assets/Tour.webp";
+import { TbLogin2 } from "react-icons/tb";
 
 export const Header = () => {
+  const navLinkClass = ({ isActive }) =>
+    `transition-colors duration-200 ${
+      isActive ? "text-white font-semibold" : "text-orange-500 hover:text-white"
+    }`;
+
   return (
-    <nav className="bg-black/50 fixed w-full z-20 top-0 start-0 border-b border-default">
+    <nav className="bg-black/20 fixed w-full z-20 top-0 start-0 border-b border-default">
       <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
         <Link
           to="/"
           className="flex items-center space-x-3 rtl:space-x-reverse"
         >
-          <img src={Logo} className="h-8" alt="Tours and Travel" />
-          <span className="self-center text-xl text-heading font-semibold whitespace-nowrap">
+          <img src={Logo} className="h-8 bg-white" alt="Tours and Travel" />
+          <span className="self-center text-xl text-heading font-semibold text-white whitespace-nowrap">
             Tours and Travel
           </span>
         </Link>
-        <button
-          data-collapse-toggle="navbar-default"
-          type="button"
-          className="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-body rounded-base md:hidden hover:bg-neutral-secondary-soft hover:text-heading focus:outline-none focus:ring-2 focus:ring-neutral-tertiary"
-          aria-controls="navbar-default"
-          aria-expanded="false"
-        >
-          <span className="sr-only">Open main menu</span>
-          <svg
-            className="w-6 h-6"
-            aria-hidden="true"
-            xmlns="http://www.w3.org/2000/svg"
-            width="24"
-            height="24"
-            fill="none"
-            viewBox="0 0 24 24"
-          >
-            <path
-              stroke="currentColor"
-              strokeLinecap="round"
-              strokeWidth="2"
-              d="M5 7h14M5 12h14M5 17h14"
-            />
-          </svg>
-        </button>
         <div className="hidden w-full md:block md:w-auto" id="navbar-default">
           <ul className="font-medium flex flex-col p-4 md:p-0 mt-4 border border-default rounded-base bg-neutral-secondary-soft md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 md:bg-neutral-primary">
             <li>
-              <NavLink
-                to="/"
-                className={({ isActive }) =>
-                  isActive
-                    ? "text-black-600 font-semibold"
-                    : "text-gray-700 hover:text-black-600"
-                }
-              >
+              <NavLink to="/" className={navLinkClass}>
                 Home
               </NavLink>
             </li>
             <li>
-              <NavLink
-                to="/gallery"
-                className={({ isActive }) =>
-                  isActive
-                    ? "text-black-600 font-semibold"
-                    : "text-gray-700 hover:text-black-600"
-                }
-              >
+              <NavLink to="/gallery" className={navLinkClass}>
                 Gallery
               </NavLink>
             </li>
             <li>
-              <NavLink
-                to="/destination"
-                className={({ isActive }) =>
-                  isActive
-                    ? "text-black-600 font-semibold"
-                    : "text-gray-700 hover:text-black-600"
-                }
-              >
+              <NavLink to="/destination" className={navLinkClass}>
                 Destination
               </NavLink>
             </li>
             <li>
-              <NavLink
-                to="/contact"
-                className={({ isActive }) =>
-                  isActive
-                    ? "text-black-600 font-semibold"
-                    : "text-gray-700 hover:text-black-600"
-                }
-              >
+              <NavLink to="/contact" className={navLinkClass}>
                 Contact
               </NavLink>
             </li>
             <li>
-              <NavLink
-                to="/about"
-                className={({ isActive }) =>
-                  isActive
-                    ? "text-black-600 font-semibold"
-                    : "text-gray-700 hover:text-black-600"
-                }
-              >
+              <NavLink to="/about" className={navLinkClass}>
                 About
+              </NavLink>
+            </li>
+            <li>
+              <NavLink to="/login">
+                <button className="flex items-center bg-orange-500 text-white px-6 py-2 rounded-2xl">
+                  <span>LogIn</span>
+                  <TbLogin2 />
+                </button>
               </NavLink>
             </li>
           </ul>

@@ -1,12 +1,12 @@
 import React from "react";
 import { HeroContent } from "./HeroContent";
-import HeroImage from "../../../assets/HeroPic.jpeg";
+import HeroImage from "../../../assets/HeroPic.jpg";
 import { HeroSearch } from "./HeroSearch";
 
 export const Hero = () => {
   return (
     <section
-      className="relative min-h-screen"
+      className="relative"
       style={{
         backgroundImage: `url(${HeroImage})`,
         backgroundPosition: "center",
