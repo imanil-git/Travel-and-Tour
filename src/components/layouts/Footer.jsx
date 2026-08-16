@@ -2,9 +2,9 @@ import React from 'react'
 
 export const Footer = () => {
   return (
-    <footer className='bg-slate-900 text-white'>
+    <footer className='bg-white'>
         {/* bottom */}
-        <div className='border-t border-gray-700 py-4 text-center text-gray-400'>
+        <div className='py-4 text-center text-gray-400 font-sans'>
             &copy; {new Date().getFullYear()} Travel Nepal. All Rigths Reserved.
         </div>
     </footer>
