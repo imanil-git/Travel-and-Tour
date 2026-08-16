@@ -2,63 +2,64 @@ import React from "react";
 import { Link, NavLink } from "react-router-dom";
 import Logo from "../../assets/Tour.webp";
 import { TbLogin2 } from "react-icons/tb";
+import { IoSearch } from "react-icons/io5";
+import { RxHamburgerMenu } from "react-icons/rx";
+import { useMenuStore } from "../../store/useMenuStore";
+import { MobileMenu } from "../common/MobileMenu";
 
 export const Header = () => {
+  const { toogleMenu, isMenuOpen } = useMenuStore();
+  console.log(isMenuOpen)
   const navLinkClass = ({ isActive }) =>
     `transition-colors duration-200 ${
       isActive ? "text-white font-semibold" : "text-orange-500 hover:text-white"
     }`;
 
   return (
-    <nav className="bg-black/20 fixed w-full z-20 top-0 start-0 border-b border-default">
-      <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
-        <Link
-          to="/"
-          className="flex items-center space-x-3 rtl:space-x-reverse"
-        >
-          <img src={Logo} className="h-8 bg-white" alt="Tours and Travel" />
-          <span className="self-center text-xl text-heading font-semibold text-white whitespace-nowrap">
-            Tours and Travel
-          </span>
-        </Link>
-        <div className="hidden w-full md:block md:w-auto" id="navbar-default">
-          <ul className="font-medium flex flex-col p-4 md:p-0 mt-4 border border-default rounded-base bg-neutral-secondary-soft md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 md:bg-neutral-primary">
-            <li>
-              <NavLink to="/" className={navLinkClass}>
-                Home
-              </NavLink>
-            </li>
-            <li>
-              <NavLink to="/gallery" className={navLinkClass}>
-                Gallery
-              </NavLink>
-            </li>
-            <li>
-              <NavLink to="/destination" className={navLinkClass}>
-                Destination
-              </NavLink>
-            </li>
-            <li>
-              <NavLink to="/contact" className={navLinkClass}>
-                Contact
-              </NavLink>
-            </li>
-            <li>
-              <NavLink to="/about" className={navLinkClass}>
-                About
-              </NavLink>
-            </li>
-            <li>
-              <NavLink to="/login">
-                <button className="flex items-center bg-orange-500 text-white px-6 py-2 rounded-2xl">
-                  <span>LogIn</span>
-                  <TbLogin2 />
-                </button>
-              </NavLink>
-            </li>
-          </ul>
+    <>
+      <nav className="w-full bg-white">
+        <div className="mx-auto flex justify-between items-center h-20 text-center">
+          {/* Left Side */}
+          <div className=" flex items-center gap-8">
+            <span className="self-center text-xl text-heading font-semibold whitespace-nowrap font-valve">
+              Tour And Travel
+            </span>
+            <ul className="hidden items-center gap-4 md:flex">
+              <li>
+                <a href="#" aria-current="page">
+                  Home
+                </a>
+              </li>
+              <li>
+                <a href="#">About</a>
+              </li>
+              <li>
+                <a href="#">Services</a>
+              </li>
+            </ul>
+          </div>
+          <div className="hidden relative md:flex items-center gap-6">
+            <input
+              type="text"
+              id="input-group-1"
+              placeholder="Search Destinations"
+              className="bg-[#efeff1] rounded-4xl sm:w-72 lg:w-96 px-5 py-2.5"
+            />
+            <IoSearch className="absolute text-2xl right-44 text-gray-400" />
+            <button className="bg-[#28364c] border border-[#28364c] w-32 text-center text-white rounded-4xl p-3">
+              Book Now
+            </button>
+          </div>
+          <button
+            type="button"
+            onClick={toogleMenu}
+            className="bg-[#28364c] border border-[#28364c] text-center text-white rounded-4xl p-2 text-xl md:hidden"
+          >
+            <RxHamburgerMenu />
+          </button>
         </div>
-      </div>
-    </nav>
+      </nav>
+      {isMenuOpen && <MobileMenu />}
+    </>
   );
 };
