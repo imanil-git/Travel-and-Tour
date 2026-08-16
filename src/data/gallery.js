@@ -11,11 +11,4 @@ export const galleryImages = [
   { id: 4, title: "Kathmandu Heritage", category: "Culture", image: Kathmandu },
   { id: 5, title: "Wild Chitwan", category: "Wildlife", image: Chitwan },
   { id: 6, title: "Annapurna Trails", category: "Trekking", image: Annapurna },
-  { id: 7, title: "Annapurna Trails", category: "Trekking", image: Annapurna },
-  { id: 8, title: "Annapurna Trails", category: "Trekking", image: Annapurna },
-  { id: 9, title: "Annapurna Trails", category: "Trekking", image: Annapurna },
-  { id: 10, title: "Annapurna Trails", category: "Trekking", image: Annapurna },
-  { id: 11, title: "Annapurna Trails", category: "Trekking", image: Annapurna },
-  { id: 12, title: "Annapurna Trails", category: "Trekking", image: Annapurna },
-  { id: 13, title: "Annapurna Trails", category: "Trekking", image: Annapurna },
 ];
