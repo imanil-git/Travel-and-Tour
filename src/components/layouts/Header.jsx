@@ -6,6 +6,7 @@ import { IoSearch } from "react-icons/io5";
 import { RxHamburgerMenu } from "react-icons/rx";
 import { useMenuStore } from "../../store/useMenuStore";
 import { MobileMenu } from "../common/MobileMenu";
+import { Button } from "../common/Button";
 
 export const Header = () => {
   const { toogleMenu, isMenuOpen } = useMenuStore();
@@ -52,9 +53,7 @@ export const Header = () => {
               className="bg-[#efeff1] rounded-4xl sm:w-72 lg:w-96 px-5 py-2.5"
             />
             <IoSearch className="absolute text-2xl right-44 text-gray-400" />
-            <button className="bg-[#28364c] border border-[#28364c] w-32 text-center text-white rounded-4xl p-3">
-              Book Now
-            </button>
+            <Button variant="primary" className="w-32">Book Now</Button>
           </div>
           <button
             type="button"
