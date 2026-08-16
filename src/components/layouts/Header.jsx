@@ -9,10 +9,12 @@ import { MobileMenu } from "../common/MobileMenu";
 
 export const Header = () => {
   const { toogleMenu, isMenuOpen } = useMenuStore();
-  console.log(isMenuOpen)
+  console.log(isMenuOpen);
   const navLinkClass = ({ isActive }) =>
     `transition-colors duration-200 ${
-      isActive ? "text-white font-semibold" : "text-orange-500 hover:text-white"
+      isActive
+        ? "text-gray-400 font-semibold"
+        : "text-black hover:text-gray-700"
     }`;
 
   return (
@@ -26,15 +28,19 @@ export const Header = () => {
             </span>
             <ul className="hidden items-center gap-4 md:flex">
               <li>
-                <a href="#" aria-current="page">
+                <NavLink className={navLinkClass} to="/" aria-current="page">
                   Home
-                </a>
+                </NavLink>
               </li>
               <li>
-                <a href="#">About</a>
+                <NavLink className={navLinkClass} to="/about">
+                  About
+                </NavLink>
               </li>
               <li>
-                <a href="#">Services</a>
+                <NavLink className={navLinkClass} to="/contact">
+                  Services
+                </NavLink>
               </li>
             </ul>
           </div>
@@ -53,7 +59,7 @@ export const Header = () => {
           <button
             type="button"
             onClick={toogleMenu}
-            className="bg-[#28364c] border border-[#28364c] text-center text-white rounded-4xl p-2 text-xl md:hidden"
+            className="bg-[#28364c] border border-[#28364c] text-center text-white rounded-full p-2 text-xl md:hidden"
           >
             <RxHamburgerMenu />
           </button>

@@ -12,30 +12,30 @@
   font-display: swap;
 }
 
-@theme {
-  --font-valve: "Valve", sans-serif;
-}
-
-/* Heading */
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  font-family: "Valve", sans-serif;
-}
-
 @font-face {
-  font-family: "KGMissSteward";
-  src: url("../public/KGMissSteward.ttf") format("truetype");
+  font-family: "Aquawa-Pro";
+  src: url("../public/Aquawax-Pro-DemiBold-trial.ttf") format("truetype");
   font-display: swap;
 }
 
-a,
+@theme {
+  --font-valve: "Valve", sans-serif;
+  --font-value: "Aquawa-Pro", sans-serif;
+}
+
+body {
+  font-family: "Aquawa-Pro", sans-serif;
+  font-size: 16px;
+}
+/* Heading */
+span {
+  font-family: "Valve", sans-serif;
+}
+
+/* a,
 p,
 li,
 div,
 button {
-  font-family: "KGMissSteward", sans-serif;
-}
+  font-family: "Aquawa-Pro", sans-serif;
+} */
