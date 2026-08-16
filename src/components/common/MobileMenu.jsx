@@ -1,5 +1,6 @@
 import { IoSearch } from "react-icons/io5";
 import { useMenuStore } from "../../store/useMenuStore";
+import { Button } from "./Button";
 
 export const MobileMenu = () => {
   const { toogleMenu, closeMenu } = useMenuStore();
@@ -18,9 +19,9 @@ export const MobileMenu = () => {
           />
           <IoSearch className="absolute text-2xl right-4 top-1/2 -translate-y-1/2 text-gray-400" />
         </div>
-        <button className="bg-[#28364c] border border-[#28364c] w-28 sm:w-32 text-center text-white rounded-4xl p-3">
+        <Button variant="primary" className="w-28">
           Book Now
-        </button>
+        </Button>
       </div>
       <ul className="items-center gap-4">
         <li>

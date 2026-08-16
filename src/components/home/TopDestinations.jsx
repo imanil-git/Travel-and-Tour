@@ -7,6 +7,7 @@ import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 import { galleryImages } from "../../data/gallery.js";
 import { useState } from "react";
 import { SectionTitle } from "../common/SectionTitle";
+import { Button } from "../common/Button.jsx";
 
 export const TopDestinations = () => {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -142,9 +143,9 @@ export const TopDestinations = () => {
           >
             <FaArrowRight />
           </button>
-          <button className="bg-[#28364c] border border-[#28364c] w-32 text-center text-white rounded-4xl p-3">
+          <Button variant="primary" className="w-32">
             View More
-          </button>
+          </Button>
         </div>
       </div>
     </section>

@@ -1,4 +1,5 @@
 import HeroImage from "../../assets/HeroPic.jpg";
+import { Button } from "../common/Button";
 
 export const Hero = () => {
   return (
@@ -19,12 +20,12 @@ export const Hero = () => {
             platform.
           </p>
           <div className="flex gap-4">
-            <button className="bg-white border border-black w-40 text-center text-black rounded-4xl p-2">
+            <Button variant="secondary" className="w-40">
               Plan Your Trip
-            </button>
-            <button className="border w-48 text-center text-white rounded-4xl p-2">
+            </Button>
+            <Button variant="teritary" className="w-48">
               Explore Destinations
-            </button>
+            </Button>
           </div>
         </div>
       </div>
