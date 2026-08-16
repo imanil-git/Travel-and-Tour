@@ -1,24 +1,41 @@
 @import "tailwindcss";
 
-@layer base {
-    *{
-        box-sizing: border-box
-    }
-    html,
-    body,
-    #root {
-        width: 100%;
-        min-height: 100%;
-        margin: 0;
-        padding: 0;
-    }
-    html {
-        min-height: 100%
-    }
-    body {
-        min-height: 100vh;
-    }
-    #root{
-        min-height: 100vh;
-    }
+@font-face {
+  font-family: "Valve";
+  src: url("../public/valve\ bd.otf") format("opentype");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "ProfaTrial-Thin";
+  src: url("../public/ProfaTrial-Thin.ttf") format("truetype");
+  font-display: swap;
+}
+
+@theme {
+  --font-valve: "Valve", sans-serif;
+}
+
+/* Heading */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Valve", sans-serif;
+}
+
+@font-face {
+  font-family: "KGMissSteward";
+  src: url("../public/KGMissSteward.ttf") format("truetype");
+  font-display: swap;
+}
+
+a,
+p,
+li,
+div,
+button {
+  font-family: "KGMissSteward", sans-serif;
 }

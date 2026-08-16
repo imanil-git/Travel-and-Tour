@@ -5,7 +5,7 @@ import { Outlet } from "react-router-dom";
 
 export const DefaultLayout = () => {
   return (
-    <div className="flex min-h-screen flex-col">
+    <div className="flex min-h-screen flex-col bg-white mx-6">
       <div className="relative">
         {/* Header */}
         <Header />
