@@ -4,7 +4,7 @@ export const BenefitCard = ({benefit}) => {
     const Icon = benefit.icon
   return (
     <article className="flex items-center gap-4 rounded-2xl bg-gray-500 p-4 text-white">
-      <div className="flex h-20 w-28 items-center justify-center rounded-xl bg-white text-[#28364c]">
+      <div className="hidden md:flex h-20 w-28 items-center justify-center overflow-hidden rounded-xl bg-white text-[#28364c]">
         <Icon size={60} />
       </div>
 

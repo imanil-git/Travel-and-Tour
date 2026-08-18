@@ -11,7 +11,7 @@ import { BenefitCard } from "./BenefitCard";
 export const WhyChooseUs = () => {
   return (
     <section className="py-16">
-      <div className="w-full px-20">
+      <div className="w-full px-12 sm:px-20">
         {/* Main Content */}
         <div className="grid gap-16 items-center md:grid-cols-2">
           {/* Left Content */}
