@@ -4,9 +4,6 @@ import { Button } from "./Button";
 
 export const MobileMenu = () => {
   const { toogleMenu, closeMenu } = useMenuStore();
-  // if (!toogleMenu) {
-  //   return null;
-  // }
   return (
     <section className="flex flex-col gap-4 mb-4 md:hidden">
       <div className="flex flex-col gap-6 md:justify-between">

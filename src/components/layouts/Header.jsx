@@ -10,7 +10,6 @@ import { Button } from "../common/Button";
 
 export const Header = () => {
   const { toogleMenu, isMenuOpen } = useMenuStore();
-  console.log(isMenuOpen);
   const navLinkClass = ({ isActive }) =>
     `transition-colors duration-200 ${
       isActive
@@ -34,7 +33,7 @@ export const Header = () => {
                 </NavLink>
               </li>
               <li>
-                <NavLink className={navLinkClass} to="/about">
+                <NavLink className={navLinkClass} to="/destination">
                   Destinations
                 </NavLink>
               </li>
@@ -63,12 +62,12 @@ export const Header = () => {
           <div className="hidden md:flex items-center gap-4">
             <div className="relative w-fit">
               <input
-              type="text"
-              id="input-group-1"
-              placeholder="Search Destinations"
-              className="bg-[#efeff1] rounded-4xl sm:w-56 sm:px-4 lg:w-64 px-5 py-2.5"
-            />
-            <IoSearch className="absolute text-2xl sm:right-4 right-4 top-1/2 -translate-y-1/2 text-gray-400" />
+                type="text"
+                id="input-group-1"
+                placeholder="Search Destinations"
+                className="bg-[#efeff1] rounded-4xl sm:w-56 sm:px-4 lg:w-64 px-5 py-2.5"
+              />
+              <IoSearch className="absolute text-2xl sm:right-4 right-4 top-1/2 -translate-y-1/2 text-gray-400" />
             </div>
             <Button variant="primary" className="w-32">
               Book Now
