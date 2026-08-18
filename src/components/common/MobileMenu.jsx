@@ -8,8 +8,8 @@ export const MobileMenu = () => {
   //   return null;
   // }
   return (
-    <div className="flex flex-col gap-4 mb-2 md:hidden">
-      <div className="flex items-center justify-between">
+    <div className="flex flex-col gap-4 mb-4 md:hidden">
+      <div className="flex flex-col gap-6 md:justify-between">
         <div className="relative">
           <input
             type="text"
@@ -17,7 +17,7 @@ export const MobileMenu = () => {
             placeholder="Search Destinations"
             className="bg-[#efeff1] rounded-4xl w-80 lg:w-96 px-5 py-2.5"
           />
-          <IoSearch className="absolute text-2xl right-4 top-1/2 -translate-y-1/2 text-gray-400" />
+          <IoSearch className="absolute text-2xl right-16 top-1/2 -translate-y-1/2 text-gray-400" />
         </div>
         <Button variant="primary" className="w-28">
           Book Now

@@ -12,17 +12,17 @@ import { Button } from "../common/Button.jsx";
 export const TopDestinations = () => {
   const [activeIndex, setActiveIndex] = useState(0);
   return (
-    <section className="py-10 px-14 bg-gray-300 rounded-4xl">
+    <section className="lg:py-10 lg:px-14 px-2 py-10 bg-gray-300 rounded-4xl">
       <div className="relative mx-auto w-full px-6">
         <SectionTitle
           title="Top Destinations"
           description={
             <>
-              Find your own destination to choose your next journey <br /> and
+              Find your own destination to choose your next journey and
               enjoy your journey with us
             </>
           }
-          className="flex items-center justify-between mb-8"
+          className="flex flex-col items-center justify-center sm:flex-row sm:items-center sm:justify-between mb-8"
         />
 
         <Swiper
@@ -108,26 +108,6 @@ export const TopDestinations = () => {
             </SwiperSlide>
           ))}
         </Swiper>
-
-        {/* <div className="mt-8 flex justify-center gap-2">
-          {galleryImages.map((_, index) => (
-            <div
-              key={index}
-              className={`h-1 rounded-full transition-all duration-500 ${
-                activeIndex === index ? "w-6 bg-blue-400" : "w-2 bg-white/20"
-              }`}
-            />
-          ))}
-        </div> */}
-
-        {/* <div className="mx-auto mt-8 h-1 w-64 overflow-hidden rounded-full bg-white/10">
-          <div
-            className="h-full rounded-full bg-blue-400 transition-all duration-500"
-            style={{
-              width: `${((activeIndex + 1) / galleryImages.length) * 100}%`,
-            }}
-          />
-        </div> */}
 
         <div className="mt-6">
           <button
