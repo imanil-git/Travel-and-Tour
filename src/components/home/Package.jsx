@@ -10,8 +10,8 @@ import { packageData } from "../../data/package";
 export const Package = () => {
   return (
     <section className="py-16">
-      <div className="max-w-full px-10 sm:px-18">
-        <div className="grid gap-6 md:grid-cols-4">
+      <div className="max-w-full px-2 sm:px-16 lg:px-18">
+        <div className="grid gap-4 sm:gap-6 md:grid-cols-4">
           {/* Introduction Card */}
           <div className="col-span-2 flex min-h-80 flex-col justify-between rounded-2xl bg-slate-500 p-7 text-white">
             <div>

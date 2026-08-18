@@ -16,12 +16,8 @@ export const TopDestinations = () => {
       <div className="relative mx-auto w-full px-6">
         <SectionTitle
           title="Top Destinations"
-          description={
-            <>
-              Find your own destination to choose your next journey and
-              enjoy your journey with us
-            </>
-          }
+          description="Find your own destination to choose your next journey and
+              enjoy your journey with us"
           className="flex flex-col items-center justify-center sm:flex-row sm:items-center sm:justify-between mb-8"
         />
 
