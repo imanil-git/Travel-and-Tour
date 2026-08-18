@@ -23,14 +23,29 @@ export const Header = () => {
       <nav className="w-full bg-white">
         <div className="mx-auto flex justify-between items-center h-20 text-center">
           {/* Left Side */}
-          <div className=" flex items-center gap-8">
+          <div className=" flex items-center gap-4 lg:flex lg:gap-6">
             <span className="self-center text-xl text-heading font-semibold whitespace-nowrap font-valve">
               Tour And Travel
             </span>
-            <ul className="hidden items-center gap-4 md:flex">
+            <ul className="hidden items-center gap-4 md:flex md:gap-3">
               <li>
                 <NavLink className={navLinkClass} to="/" aria-current="page">
                   Home
+                </NavLink>
+              </li>
+              <li>
+                <NavLink className={navLinkClass} to="/about">
+                  Destinations
+                </NavLink>
+              </li>
+              <li>
+                <NavLink className={navLinkClass} to="/about">
+                  Popular
+                </NavLink>
+              </li>
+              <li>
+                <NavLink className={navLinkClass} to="/about">
+                  Blog
                 </NavLink>
               </li>
               <li>
@@ -45,15 +60,19 @@ export const Header = () => {
               </li>
             </ul>
           </div>
-          <div className="hidden relative md:flex items-center gap-6">
-            <input
+          <div className="hidden md:flex items-center gap-4">
+            <div className="relative w-fit">
+              <input
               type="text"
               id="input-group-1"
               placeholder="Search Destinations"
-              className="bg-[#efeff1] rounded-4xl sm:w-72 lg:w-96 px-5 py-2.5"
+              className="bg-[#efeff1] rounded-4xl sm:w-56 sm:px-4 lg:w-64 px-5 py-2.5"
             />
-            <IoSearch className="absolute text-2xl right-44 text-gray-400" />
-            <Button variant="primary" className="w-32">Book Now</Button>
+            <IoSearch className="absolute text-2xl sm:right-4 right-4 top-1/2 -translate-y-1/2 text-gray-400" />
+            </div>
+            <Button variant="primary" className="w-32">
+              Book Now
+            </Button>
           </div>
           <button
             type="button"
