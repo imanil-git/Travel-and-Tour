@@ -4,7 +4,7 @@ export const PopularCard = ({ package: packageData }) => {
   const Icon = packageData.Icon;
   return (
     <div
-      className="group relative h-80 overflow-hidden rounded-2xl bg-cover bg-center"
+      className="group relative h-[60vh] overflow-hidden rounded-2xl bg-cover bg-center"
       style={{
         backgroundImage: `url(${packageData.image})`,
       }}

@@ -4,38 +4,49 @@ import "swiper/css";
 import "swiper/css/navigation";
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 
-import { galleryImages } from "../../data/gallery.js";
 import { useState } from "react";
 import { SectionTitle } from "../common/SectionTitle";
 import { Button } from "../common/Button.jsx";
+import Pokhara from "../../assets/destinations/Pokhara.jpg";
+import Kathmandu from "../../assets/destinations/Kathmandu.jpg";
+import Mustang from "../../assets/destinations/Mustang.jpg";
+import Everest from "../../assets/destinations/Everest.jpg";
+import Chitwan from "../../assets/destinations/Chitwan.jpg";
+import Annapurna from "../../assets/destinations/Annapurna.jpg";
+export const galleryImages = [
+  { id: 1, title: "Peaceful Pokhara", category: "Nature", image: Pokhara },
+  { id: 2, title: "Mount Everest", category: "Mountain", image: Everest },
+  { id: 3, title: "Mystical Mustang", category: "Adventure", image: Mustang },
+  { id: 4, title: "Kathmandu Heritage", category: "Culture", image: Kathmandu },
+  { id: 5, title: "Wild Chitwan", category: "Wildlife", image: Chitwan },
+  { id: 6, title: "Annapurna Trails", category: "Trekking", image: Annapurna },
+];
 
 export const TopDestinations = () => {
   const [activeIndex, setActiveIndex] = useState(0);
   return (
-    <section className="lg:py-10 lg:px-14 px-2 py-10 bg-gray-300 rounded-4xl">
+    <section className="px-4 sm:px-10 lg:px-16 lg:py-10 py-10 bg-gray-300 rounded-4xl">
       <div className="relative mx-auto w-full px-6">
         <SectionTitle
           title="Top Destinations"
-          description="Find your own destination to choose your next journey and
-              enjoy your journey with us"
-          className="flex flex-col items-center justify-center sm:flex-row sm:items-center sm:justify-between mb-8"
+          description={
+            <>
+              Find your own destination to choose your next journey and enjoy
+              your journey with us
+            </>
+          }
+          className="flex flex-col items-start justify-center sm:flex-row sm:items-center sm:justify-between mb-8"
         />
 
         <Swiper
           modules={[Autoplay, Navigation]}
-          // effect="coverflow"
           grabCursor={true}
-          // onSlideChange={(swiper) => {
-          //   setActiveIndex(swiper.realIndex);
-          // }}
           navigation={{
             nextEl: ".gallery-next",
             prevEl: ".gallery-prev",
           }}
           slidesPerView={1}
-          centeredSlides={false} // onSlideChange={(swiper) => {
-          //   setActiveIndex(swiper.realIndex);
-          // }}
+          centeredSlides={false}
           navigation={{
             nextEl: ".gallery-next",
             prevEl: ".gallery-prev",
@@ -79,11 +90,11 @@ export const TopDestinations = () => {
             <SwiperSlide key={item.id}>
               <div className="group relative overflow-hidden rounded-2xl bg-slate-900 shadow-2xl">
                 {/* Image */}
-                <div className="aspect-4/3 overflow-hidden">
+                <div className="overflow-hidden">
                   <img
                     src={item.image}
                     alt={item.title}
-                    className="h-full w-full object-cover transition duration-700 group-hover:scale-110"
+                    className="h-[55vh] w-full object-cover transition duration-700 group-hover:scale-110"
                   />
                 </div>
 

@@ -5,7 +5,7 @@ export const DestinationCard = ({ destination }) => {
   return (
     <div className="group overflow-hidden rounded-2xl bg-white mb-8 shadow-md transition duration-300 hover:-translate-y-2 hover:shadow-xl">
       {/* Image */}
-      <div className="relative h-100 overflow-hidden">
+      <div className="aspect-[4/5] relative h-100 overflow-hidden">
         <img
           src={destination.image}
           alt={destination.name}
