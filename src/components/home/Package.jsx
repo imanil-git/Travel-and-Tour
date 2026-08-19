@@ -1,19 +1,36 @@
 import React from "react";
 import { Button } from "../common/Button";
 import image from "../../assets/PopularCard.jpg";
-
+import { PopularCard } from "./PopularCard";
+import Boudha from "../../assets/popular/Boudhanath.jpg"
+import BaseCamp from "../../assets/popular/BaseCamp.jpg"
 import { ImBasecamp } from "react-icons/im";
 import { MdTempleBuddhist } from "react-icons/md";
-import { PopularCard } from "./PopularCard";
-import { packageData } from "../../data/package";
+
+export const packageData = [
+  {
+    id: 1,
+    image: BaseCamp,
+    title: "Mountain Base Camp",
+    Icon: ImBasecamp,
+    description: "This is place where you could feel cold and beauty",
+  },
+  {
+    id: 2,
+    image: Boudha,
+    title: "Heritage",
+    Icon: MdTempleBuddhist,
+    description: "Our ancestor left us their pride to pass on to our generation, Than You!",
+  }
+];
 
 export const Package = () => {
   return (
-    <section className="py-16">
-      <div className="max-w-full px-2 sm:px-16 lg:px-18">
-        <div className="grid gap-4 sm:gap-6 md:grid-cols-4">
+    <section className="py-24">
+      <div className="max-w-full px-4 sm:px-10 md:16">
+        <div className="grid gap-6 md:grid-cols-4">
           {/* Introduction Card */}
-          <div className="col-span-2 flex min-h-80 flex-col justify-between rounded-2xl bg-slate-500 p-7 text-white">
+          <div className="md:col-span-2 flex h-[60vh] flex-col justify-between rounded-2xl bg-slate-400 p-7 text-white">
             <div>
               <h2 className="font-heading text-2xl font-semibold">
                 Tour Packages
