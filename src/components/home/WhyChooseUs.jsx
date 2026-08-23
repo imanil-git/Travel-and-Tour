@@ -61,7 +61,7 @@ export const WhyChooseUs = () => {
           {/* Left Content */}
           <div className="md:col-span-3  flex flex-col gap-4">
             <SectionTitle
-              title="Top Destinations"
+              title="Why Choose Us?"
               description="We give you a good service for tours and travel.You will not regert
           choosing us. There is ten thousand customer that is satisfied with us and they always prefer us"
               className="flex flex-col gap-2 max-w-2xl"
