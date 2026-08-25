@@ -4,7 +4,7 @@ import { Button } from "../common/Button";
 export const AboutHero = () => {
   return (
     <section
-      className="w-full h-screen bg-center bg-cover bg-no-repeat rounded-3xl px-4 sm:px-10 lg:px-16"
+      className="w-full h-96 bg-center bg-cover bg-no-repeat rounded-3xl px-4 sm:px-10 lg:px-16"
       style={{
         backgroundImage: `url(${HeroImage})`,
       }}
