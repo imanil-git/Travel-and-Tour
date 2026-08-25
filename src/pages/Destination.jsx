@@ -114,7 +114,7 @@ export const Destination = () => {
   const [isFilterOpen, setIsFilterOpen] = useState(false);
 
   // Filter states
-  const [filters, setFilterOpen] = useState({
+  const [filters, setFilters] = useState({
     sortBy: "Popularity",
     category: "All",
     region: "All",
@@ -144,7 +144,7 @@ export const Destination = () => {
   const filteredDestinations = useMemo(() => {
     const result = destinations.filter((destination) => {
       const matchesCategory =
-        category === "All" || destinaiton.category === category;
+        category === "All" || destination.category === category;
 
       const matchesRegion = region === "All" || destination.region === region;
 
