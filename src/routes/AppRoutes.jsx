@@ -2,9 +2,9 @@ import React from "react";
 import { Route, Routes } from "react-router-dom";
 import { HomePage } from "../pages/HomePage";
 import { DefaultLayout } from "../components/layouts/DefaultLayout";
-import { Contact } from "../pages/Contact";
 import { About } from "../pages/About";
 import { Destination } from "../pages/Destination";
+import { Service } from "../pages/Service";
 
 export const AppRoutes = () => {
   return (
@@ -14,10 +14,9 @@ export const AppRoutes = () => {
         <Route path="/" element={<DefaultLayout />}>
           <Route index element={<HomePage />} />
           <Route path="destination" element={<Destination />} />
-          <Route path="contact" element={<Contact />} />
+          <Route path="service" element={<Service />} />
           <Route path="about" element={<About />} />
         </Route>
-
         {/* Private Pages */}
       </Routes>
     </div>
