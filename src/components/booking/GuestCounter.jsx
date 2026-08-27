@@ -3,7 +3,7 @@ import React from "react";
 
 export const GuestCounter = () => {
   return (
-    <div className="bg-white rounded-3xl p-8 border border-slate-200/80 shadow-sm mb-2">
+    <div className="bg-white rounded-3xl p-8 border border-slate-200/80 shadow-sm">
       <h2 className="text-xl font-bold text-slate-900 mb-6 flex items-center gap-2">
         <Calendar className="w-5 h-5 text-slate-700" />
         Select Trip Options
