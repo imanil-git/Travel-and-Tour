@@ -1,9 +1,17 @@
 import { IoSearch } from "react-icons/io5";
 import { useMenuStore } from "../../store/useMenuStore";
 import { Button } from "./Button";
+import { NavLink } from "react-router-dom";
 
 export const MobileMenu = () => {
   const { toogleMenu, closeMenu } = useMenuStore();
+  const navLinkClass = ({ isActive }) => {
+    `transition-colors duration-200 ${
+      isActive
+        ? "text-gray-400 font-semibold"
+        : "text-black hover:text-gray-700"
+    }`;
+  };
   return (
     <section className="flex flex-col gap-4 mb-4 md:hidden">
       <div className="flex flex-col gap-6 md:justify-between">
@@ -22,15 +30,29 @@ export const MobileMenu = () => {
       </div>
       <ul className="items-center gap-4">
         <li>
-          <a href="#" aria-current="page">
+          <NavLink className={navLinkClass} to="/" aria-current="page">
             Home
-          </a>
+          </NavLink>
         </li>
         <li>
-          <a href="#">About</a>
+          <NavLink className={navLinkClass} to="/destination">
+            Destination
+          </NavLink>
         </li>
         <li>
-          <a href="#">Services</a>
+          <NavLink className={navLinkClass} to="/popular">
+            Popular
+          </NavLink>
+        </li>
+        <li>
+          <NavLink className={navLinkClass} to="/blog">
+            Blog
+          </NavLink>
+        </li>
+        <li>
+          <NavLink className={navLinkClass} to="/about">
+            About
+          </NavLink>
         </li>
       </ul>
     </section>

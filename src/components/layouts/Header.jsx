@@ -52,11 +52,6 @@ export const Header = () => {
                   About
                 </NavLink>
               </li>
-              <li>
-                <NavLink className={navLinkClass} to="/service">
-                  Service
-                </NavLink>
-              </li>
             </ul>
           </div>
           <div className="hidden md:flex items-center gap-4">

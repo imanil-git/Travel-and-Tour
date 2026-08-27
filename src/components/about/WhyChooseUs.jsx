@@ -36,7 +36,7 @@ export const WhyChooseUs = () => {
     <section className="py-24">
       <div className="w-full px-4 sm:px-10 lg:px-16">
         {/* Main Content */}
-        <div className="grid gap-4 items-center md:grid-cols-5">
+        <div className="grid gap-2 md:gap-4 items-center md:grid-cols-5">
           {/* Left Content */}
           <div className="md:col-span-3  flex flex-col gap-4">
             <SectionTitle
@@ -47,7 +47,7 @@ export const WhyChooseUs = () => {
             />
 
             {/* Social Icons */}
-            <div className="mt-5 flex gap-4 max-w-xl">
+            <div className="mt-5 flex gap-4 max-w-xl mb-14">
               <a href="">
                 <FaInstagram size={22} />
               </a>
