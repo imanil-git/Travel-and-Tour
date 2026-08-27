@@ -4,7 +4,7 @@ import { HomePage } from "../pages/HomePage";
 import { DefaultLayout } from "../components/layouts/DefaultLayout";
 import { About } from "../pages/About";
 import { Destination } from "../pages/Destination";
-import { Service } from "../pages/Service";
+import { BookingPage } from "../pages/BookingPage";
 
 export const AppRoutes = () => {
   return (
@@ -14,7 +14,7 @@ export const AppRoutes = () => {
         <Route path="/" element={<DefaultLayout />}>
           <Route index element={<HomePage />} />
           <Route path="destination" element={<Destination />} />
-          <Route path="service" element={<Service />} />
+          <Route path="booking" element={<BookingPage />} />
           <Route path="about" element={<About />} />
         </Route>
         {/* Private Pages */}
