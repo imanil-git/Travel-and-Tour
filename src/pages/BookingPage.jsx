@@ -2,6 +2,7 @@ import React from "react";
 import { BookingProgessStepper } from "../components/booking/BookingProgessStepper";
 import { GuestCounter } from "../components/booking/GuestCounter";
 import { AddonSelector } from "../components/booking/AddonSelector";
+import { TravelerForm } from "../components/booking/TravelerForm";
 
 export const BookingPage = () => {
   return (
@@ -10,6 +11,7 @@ export const BookingPage = () => {
         <BookingProgessStepper />
         <GuestCounter />
         <AddonSelector />
+        <TravelerForm />
       </div>
     </div>
   );
