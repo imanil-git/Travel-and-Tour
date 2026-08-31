@@ -1,5 +1,5 @@
 import { Calendar, Minus, Plus } from "lucide-react";
-import React from "react";
+import { useBookingStore } from "../../store/useBookingStore";
 
 export const GuestCounter = () => {
   return (
@@ -17,6 +17,8 @@ export const GuestCounter = () => {
           </label>
           <input
             type="date"
+            value={selectedDate}
+            onChange={(e) => setSelectedDate(e.target.value)}
             className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-slate-800 font-medium focus:outline-none focus:ring-2 focus:ring-slate-900"
           />
         </div>

@@ -7,9 +7,9 @@ import { BookingSummary } from "../components/booking/BookingSummary";
 
 export const BookingPage = () => {
   return (
-    <div className="min-h-screen bg-slate-100 font-sans text-[#28364c]">
+    <div className="min-h-screen bg-slate-100 font-sans text-[#28364c] pb-10">
       <div className="max-w-7xl mx-auto px-6 pt-10">
-        <BookingProgessStepper />
+        <BookingProgessStepper currentStep={2} />
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 mt-8">
           <div className="lg:col-span-8 space-y-8">
             <GuestCounter />
