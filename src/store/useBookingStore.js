@@ -1,39 +1,17 @@
+import { create } from "zustand";
+import { bookingData } from "../data/bookingData";
+
 export const useBookingStore = create((set, get) => ({
+  // Store
+
   selectedDate: "",
 
   guests: {
-    adults: 2,
+    adults: 0,
     children: 0,
   },
 
-  pricing: {
-    adult: 4999,
-    child: 2500,
-    serviceFee: 450,
-  },
-
   selectedAddons: ["transfer"],
-
-  addOns: [
-    {
-      id: "transfer",
-      title: "Private Airport Transfer",
-      desc: "Roundtrip pickup & drop-off",
-      price: 1200,
-    },
-    {
-      id: "boat",
-      title: "Private Boat Island Upgrade",
-      desc: "Exclusive boat for island tours",
-      price: 2500,
-    },
-    {
-      id: "insurance",
-      title: "Comprehensive Travel Insurance",
-      desc: "Full medical & cancellation coverage",
-      price: 800,
-    },
-  ],
 
   traveler: {
     firstName: "",
@@ -42,7 +20,8 @@ export const useBookingStore = create((set, get) => ({
     specialRequests: "",
   },
 
-  // Actions
+  // Action
+
   setSelectedDate: (date) => {
     set({
       selectedDate: date,
@@ -86,20 +65,21 @@ export const useBookingStore = create((set, get) => ({
     }));
   },
 
-  //   Calculations
+  // Calculations
 
   getAddonsTotal: () => {
     const { selectedAddons } = get();
 
     return selectedAddons.reduce((total, addonId) => {
-      const addon = addOns.find((item) => item.id === addonId);
+      const addon = bookingData.addons.find((item) => item.id === addonId);
+
       return total + (addon?.price || 0);
     }, 0);
   },
 
   getSubtotal: () => {
     const { guests } = get();
-    const { adult, child } = pricing;
+    const { adult, child } = bookingData.pricing;
 
     const adultsTotal = guests.adults * adult;
     const childrenTotal = guests.children * child;
@@ -109,6 +89,6 @@ export const useBookingStore = create((set, get) => ({
   },
 
   getGrandTotal: () => {
-    return get().getSubtotal() + pricing.serviceFee;
+    return get().getSubtotal() + bookingData.pricing.serviceFee;
   },
 }));
