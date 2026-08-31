@@ -1,7 +1,18 @@
 import { Users } from "lucide-react";
 import React from "react";
+import { useBookingStore } from "../../store/useBookingStore";
+
+const inputClass =
+  "w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-slate-800 focus:outline-none focus:ring-2 focus:ring-slate-900";
 
 export const TravelerForm = () => {
+  const traveler = useBookingStore((state) => state.traveler);
+
+  const updateTraveler = useBookingStore((state) => state.updateTraveler);
+
+  const handleChange = (e) => {
+    updateTraveler(e.target.name, e, target.value);
+  };
   return (
     <div className="bg-white rounded-3xl p-8 border border-slate-200/80 shadow-sm">
       <h2 className="text-xl font-bold text-slate-900 mb-6 flex items-center gap-2">
@@ -15,9 +26,12 @@ export const TravelerForm = () => {
             First Name
           </label>
           <input
+            name="firstName"
             type="text"
+            value={traveler.firstName}
+            onChange={handleChange}
             placeholder="John"
-            className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-slate-800 focus:outline-none focus:ring-2 focus:ring-slate-900"
+            className={inputClass}
           />
         </div>
         <div>
@@ -25,9 +39,12 @@ export const TravelerForm = () => {
             Last Name
           </label>
           <input
+            name="lastName"
             type="text"
+            value={traveler.lastName}
+            onChange={handleChange}
             placeholder="Doe"
-            className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-slate-800 focus:outline-none focus:ring-2 focus:ring-slate-900"
+            className={inputClass}
           />
         </div>
         <div className="md:col-span-2">
@@ -35,9 +52,12 @@ export const TravelerForm = () => {
             Email Address
           </label>
           <input
+            name="lastName"
             type="text"
+            value={traveler.email}
+            onChange={handleChange}
             placeholder="john@example.com"
-            className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-slate-800 focus:outline-none focus:ring-2 focus:ring-slate-900"
+            className={inputClass}
           />
         </div>
         <div className="md:col-span-2">
@@ -45,9 +65,12 @@ export const TravelerForm = () => {
             Special Requests (Optional)
           </label>
           <textarea
+            name="specialRequests"
             rows={3}
+            value={traveler.specialRequests}
+            onChange={handleChange}
             placeholder="Dietary requirements, pickup preferences, etc."
-            className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-slate-800 focus:outline-none focus:ring-2 focus:ring-slate-900"
+            className={inputClass}
           />
         </div>
       </div>

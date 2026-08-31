@@ -1,34 +1,12 @@
 import { Check } from "lucide-react";
 import React, { useState } from "react";
-
-const addOnOptions = [
-  {
-    id: "transfer",
-    title: "Private Airport Transfer",
-    desc: "Roundtrip pickup & drop-off",
-    price: 1200,
-  },
-  {
-    id: "boat",
-    title: "Private Boat Island Upgrade",
-    desc: "Exclusive boat for island tours",
-    price: 2500,
-  },
-  {
-    id: "insurance",
-    title: "Comprehensive Travel Insurance",
-    desc: "Full medical & cancellation coverage",
-    price: 800,
-  },
-];
+import { useBookingStore } from "../../store/useBookingStore";
+import { bookingData } from "../../data/bookingData";
 
 export const AddonSelector = () => {
-  const [selectesAddons, setSelectedAddons] = useState(["transfer"]);
-  const toggleAddon = (id) => {
-    setSelectedAddons((prev) =>
-      prev.includes(id) ? prev.filter((item) => item !== id) : [...prev, id],
-    );
-  };
+  const selectedAddons = useBookingStore((state) => state.selectedAddons);
+
+  const toggleAddon = useBookingStore((state) => state.toggleAddon);
   return (
     <section className="bg-white rounded-3xl p-8 border border-slate-200/80 shadow-sm">
       <h2 className="text-xl font-bold text-slate-900 mb-2">
@@ -39,12 +17,15 @@ export const AddonSelector = () => {
       </p>
 
       <div className="space-y-4">
-        {addOnOptions.map((addon) => {
-          const isSelected = selectesAddons.includes(addon.id);
+        {bookingData.addons.map((addon) => {
+          const isSelected = selectedAddons.includes(addon.id);
+
           return (
-            <div
+            <button
+              type="button"
               key={addon.id}
-              className={`cursor-pointer p-4 rounded-2xl border transition flex items-center justify-between ${
+              onClick={() => toggleAddon(addon.id)}
+              className={`w-full text-left cursor-pointer p-4 rounded-2xl border transition flex items-center justify-between ${
                 isSelected
                   ? "bg-slate-50/50 border-slate-900"
                   : "border-slate-200 hover:border-slate-300"
@@ -70,7 +51,7 @@ export const AddonSelector = () => {
               <span className="text-sm font-bold text-slate-900">
                 +Rs{addon.price.toLocaleString()}
               </span>
-            </div>
+            </button>
           );
         })}
       </div>

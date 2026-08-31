@@ -1,16 +1,28 @@
 import React from "react";
-import packageDetail from "../../assets/PopularCard.jpg";
 import { Clock, MapPin, ShieldCheck } from "lucide-react";
+import { useBookingStore } from "../../store/useBookingStore";
+import { bookingData } from "../../data/bookingData";
 
 export const BookingSummary = () => {
+  const guests = useBookingStore((state) => state.guests);
+  const selectedAddons = useBookingStore((state) => state.selectedAddons);
+
+  const getAddonsTotal = useBookingStore((state) => state.getAddonsTotal);
+
+  const getGrandTotal = useBookingStore((state) => state.getGrandTotal);
+
+  const { package: selectedPackage, pricing } = bookingData;
+
+  const addonsTotal = getAddonsTotal();
+  const grandTotal = getGrandTotal();
   return (
     <div className="sticky top-28 space-y-4">
       <div className="bg-white rounded-3xl p-6 border border-slate-200/80 shadow-sm">
         {/* Package Header */}
         <div className="flex gap-4 mb-6">
           <img
-            src={packageDetail}
-            alt=""
+            src={selectedPackage.image}
+            alt={selectedPackage.title}
             className="w-20 h-20 rounded-2xl object-cover"
           />
           <div>
@@ -18,13 +30,13 @@ export const BookingSummary = () => {
               Selected Package
             </span>
             <h3 className="font-bold text-slate-900 leading-snug">
-              Package Details
+              {selectedPackage.title}
             </h3>
             <div className="flex items-center gap-1 text-xs text-slate-500 mt-1">
-              <MapPin className="w-3.5 h-3.5" /> PackageDetails Location
+              <MapPin className="w-3.5 h-3.5" /> {selectedPackage.location}
             </div>
             <div className="flex items-center gap-1 text-xs text-slate-500 mt-0.5">
-              <Clock className="w-3.5 h-3.5" /> PackageDetails Duration
+              <Clock className="w-3.5 h-3.5" /> {selectedPackage.location}
             </div>
           </div>
         </div>
@@ -35,23 +47,31 @@ export const BookingSummary = () => {
 
         <div className="space-y-3 text-sm">
           <div className="flex justify-between text-slate-600">
-            <span>Adult(s)</span>
-            <span className="font-semibold text-slate-900">Rs.4999</span>
+            <span>{guests.adults} Adult(s)</span>
+            <span className="font-semibold text-slate-900">
+              Rs{(guests.adults * pricing.adult).toLocaleString()}
+            </span>
           </div>
 
           <div className="flex justify-between text-slate-600">
-            <span>Child(ren)</span>
-            <span className="font-semibold text-slate-900">Rs.3999</span>
+            <span>{guests.children} Child(ren)</span>
+            <span className="font-semibold text-slate-900">
+              Rs{(guests.children * pricing.child).toLocaleString()}
+            </span>
           </div>
 
           <div className="flex justify-between text-slate-600">
-            <span>Add-ons</span>
-            <span className="font-semibold text-slate-900">Rs.2999</span>
+            <span>Add-ons ({selectedAddons.length})</span>
+            <span className="font-semibold text-slate-900">
+              Rs{addonsTotal.toLocaleString()}
+            </span>
           </div>
 
           <div className="flex justify-between text-slate-600">
             <span>Service & Taxes</span>
-            <span className="font-semibold text-slate-900">Rs.499</span>
+            <span className="font-semibold text-slate-900">
+              Rs{pricing.serviceFee.toLocaleString()}
+            </span>
           </div>
 
           <hr className="border-slate-200 my-4" />
@@ -61,7 +81,7 @@ export const BookingSummary = () => {
               Total Price
             </span>
             <span className="font-black text-2xl text-slate-900">
-              Rs. 12496
+              Rs{grandTotal.toLocaleString()}
             </span>
           </div>
         </div>
