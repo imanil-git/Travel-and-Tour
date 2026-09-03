@@ -24,6 +24,46 @@ export const booking = [
       "This 2-day private Hiace tour is specially designed for devotees, senior citizens, and families who wish to visit the holy Muktinath Temple without undertaking the arduous multi-day trek.",
 
       "The journey takes you through the dramatic Kali Gandaki Gorge, flanked by the towering peaks of Annapurna and Dhaulagiri, offering breathtaking mountain vistas at every turn.",
+      "Embark on an unforgettable spiritual journey from the lakeside city of Pokhara to the sacred pilgrimage site of Muktinath, nestled high in the Himalayan foothills.",
+
+      "This 2-day private Hiace tour is specially designed for devotees, senior citizens, and families who wish to visit the holy Muktinath Temple without undertaking the arduous multi-day trek.",
+
+      "The journey takes you through the dramatic Kali Gandaki Gorge, flanked by the towering peaks of Annapurna and Dhaulagiri, offering breathtaking mountain vistas at every turn.",
+      "Embark on an unforgettable spiritual journey from the lakeside city of Pokhara to the sacred pilgrimage site of Muktinath, nestled high in the Himalayan foothills.",
+
+      "This 2-day private Hiace tour is specially designed for devotees, senior citizens, and families who wish to visit the holy Muktinath Temple without undertaking the arduous multi-day trek.",
+
+      "The journey takes you through the dramatic Kali Gandaki Gorge, flanked by the towering peaks of Annapurna and Dhaulagiri, offering breathtaking mountain vistas at every turn.",
+      "Embark on an unforgettable spiritual journey from the lakeside city of Pokhara to the sacred pilgrimage site of Muktinath, nestled high in the Himalayan foothills.",
+
+      "This 2-day private Hiace tour is specially designed for devotees, senior citizens, and families who wish to visit the holy Muktinath Temple without undertaking the arduous multi-day trek.",
+
+      "The journey takes you through the dramatic Kali Gandaki Gorge, flanked by the towering peaks of Annapurna and Dhaulagiri, offering breathtaking mountain vistas at every turn.",
+      "Embark on an unforgettable spiritual journey from the lakeside city of Pokhara to the sacred pilgrimage site of Muktinath, nestled high in the Himalayan foothills.",
+
+      "This 2-day private Hiace tour is specially designed for devotees, senior citizens, and families who wish to visit the holy Muktinath Temple without undertaking the arduous multi-day trek.",
+
+      "The journey takes you through the dramatic Kali Gandaki Gorge, flanked by the towering peaks of Annapurna and Dhaulagiri, offering breathtaking mountain vistas at every turn.",
+      "Embark on an unforgettable spiritual journey from the lakeside city of Pokhara to the sacred pilgrimage site of Muktinath, nestled high in the Himalayan foothills.",
+
+      "This 2-day private Hiace tour is specially designed for devotees, senior citizens, and families who wish to visit the holy Muktinath Temple without undertaking the arduous multi-day trek.",
+
+      "The journey takes you through the dramatic Kali Gandaki Gorge, flanked by the towering peaks of Annapurna and Dhaulagiri, offering breathtaking mountain vistas at every turn.",
+      "Embark on an unforgettable spiritual journey from the lakeside city of Pokhara to the sacred pilgrimage site of Muktinath, nestled high in the Himalayan foothills.",
+
+      "This 2-day private Hiace tour is specially designed for devotees, senior citizens, and families who wish to visit the holy Muktinath Temple without undertaking the arduous multi-day trek.",
+
+      "The journey takes you through the dramatic Kali Gandaki Gorge, flanked by the towering peaks of Annapurna and Dhaulagiri, offering breathtaking mountain vistas at every turn.",
+      "Embark on an unforgettable spiritual journey from the lakeside city of Pokhara to the sacred pilgrimage site of Muktinath, nestled high in the Himalayan foothills.",
+
+      "This 2-day private Hiace tour is specially designed for devotees, senior citizens, and families who wish to visit the holy Muktinath Temple without undertaking the arduous multi-day trek.",
+
+      "The journey takes you through the dramatic Kali Gandaki Gorge, flanked by the towering peaks of Annapurna and Dhaulagiri, offering breathtaking mountain vistas at every turn.",
+      "Embark on an unforgettable spiritual journey from the lakeside city of Pokhara to the sacred pilgrimage site of Muktinath, nestled high in the Himalayan foothills.",
+
+      "This 2-day private Hiace tour is specially designed for devotees, senior citizens, and families who wish to visit the holy Muktinath Temple without undertaking the arduous multi-day trek.",
+
+      "The journey takes you through the dramatic Kali Gandaki Gorge, flanked by the towering peaks of Annapurna and Dhaulagiri, offering breathtaking mountain vistas at every turn.",
     ],
 
     includes: [
