@@ -1,5 +1,5 @@
 import Boudhanath from "../../assets/Boudhanath.jpg";
-import { Breadcrumb } from "./Breadcrumb";
+import { Breadcrumb } from "./common/Breadcrumb";
 
 export const BookingHero = ({ bookingData }) => {
   return (
@@ -10,7 +10,7 @@ export const BookingHero = ({ bookingData }) => {
       }}
     >
       {/* Dark Overlay */}
-      <div className="absolute inset-0 bg-black/30" />
+      <div className="absolute inset-0 bg-black/50" />
 
       {/* Content */}
       <div className="relative z-10 text-center text-white px-4">

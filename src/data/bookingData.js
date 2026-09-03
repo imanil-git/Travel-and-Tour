@@ -36,13 +36,13 @@ export const booking = [
 
     itinerary: [
       {
-        day: "Day 1",
+        day: "Five Hours Trip",
         title: "Pokhara to Muktinath",
         description:
           "Travel from Pokhara through Jomsom and the beautiful Kali Gandaki region before reaching Muktinath.",
       },
       {
-        day: "Day 2",
+        day: "Six Hours Trip",
         title: "Muktinath to Pokhara",
         description:
           "Visit Muktinath Temple in the morning and return to Pokhara through the scenic Himalayan route.",
