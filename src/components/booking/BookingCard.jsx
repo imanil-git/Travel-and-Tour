@@ -1,6 +1,7 @@
-import { Calendar } from "lucide-react";
+import { Calendar, ShieldCheck } from "lucide-react";
 import { BookingSummary } from "./BookingSummary";
 import { TravelerCounter } from "./TravelerCounter";
+import { ContactOptions } from "./ContactOptions";
 
 export const BookingCard = ({
   bookingData,
@@ -50,13 +51,33 @@ export const BookingCard = ({
         />
 
         {/* TOTAL */}
-        <div>
-            <div>
-                <span>Total</span>
-                <span>${total}</span>
-            </div>
+        <div className="border-t border-[#D7CDC2] pt-4">
+          <div className="flex justify-between items-center">
+            <span className="text-[#433833]">Total</span>
+            <span className="text-2xl font-bold text-[#3A2D26]">${total}</span>
+          </div>
+        </div>
+
+        {/* BOOK BUTTON */}
+        <button
+          type="button"
+          disabled={!travelDate}
+          onClick={() => {
+            alert(`Booking ${traveler(s)} for ${travelDate}`);
+          }}
+          className="w-full bg-[#28364c] text-white py-3 rounded-xl font-medium hover:bg-[#3A2D26] transition-all duration-300 hover:shadow-lg disabled:cursor-not-allowed"
+        >
+          Book Now
+        </button>
+
+        {/* SECURITY */}
+        <div className="flex items-center justify-center gap-2 text-sm text-[#433833]">
+          <ShieldCheck className="w-4 h-4 text-green-500" />
+
+          <span>Secure booking • Best price guarantee</span>
         </div>
       </div>
+      <ContactOptions />
     </div>
   );
 };
