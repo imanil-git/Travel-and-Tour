@@ -1,36 +1,52 @@
-export const bookingData = {
-  package: {
-    title: "Island Hopper Adventure",
-    location: "El Nido, Palawan",
-    duration: "4 Days / 3 Nights",
-    image:
-      "https://images.unsplash.com/photo-1518509562904-e7ef99cdcc86?auto=format&fit=crop&w=300&q=80",
-  },
+export const booking = [
+  {
+    id: 1,
 
-  pricing: {
-    adult: 4999,
-    child: 2500,
-    serviceFee: 450,
-  },
+    title: "1 Night 2 Days Pokhara to Muktinath by Hiace",
 
-  addons: [
-    {
-      id: "transfer",
-      title: "Private Airport Transfer",
-      desc: "Roundtrip pickup & drop-off",
-      price: 1200,
-    },
-    {
-      id: "boat",
-      title: "Private Boat Island Upgrade",
-      desc: "Exclusive boat for island tours",
-      price: 2500,
-    },
-    {
-      id: "insurance",
-      title: "Comprehensive Travel Insurance",
-      desc: "Full medical & cancellation coverage",
-      price: 800,
-    },
-  ],
-};
+    location: "Muktinath",
+
+    duration: "1 Night / 2 Days",
+
+    groupSize: 12,
+
+    category: "Hiace",
+
+    bestTime: "All year",
+
+    price: 235,
+
+    image: "/images/packages/muktinath.jpg",
+
+    description: [
+      "Embark on an unforgettable spiritual journey from the lakeside city of Pokhara to the sacred pilgrimage site of Muktinath, nestled high in the Himalayan foothills.",
+
+      "This 2-day private Hiace tour is specially designed for devotees, senior citizens, and families who wish to visit the holy Muktinath Temple without undertaking the arduous multi-day trek.",
+
+      "The journey takes you through the dramatic Kali Gandaki Gorge, flanked by the towering peaks of Annapurna and Dhaulagiri, offering breathtaking mountain vistas at every turn.",
+    ],
+
+    includes: [
+      "Private Hiace vehicle",
+      "Experienced driver",
+      "Fuel and transportation",
+      "Pickup and drop-off in Pokhara",
+      "Basic travel assistance",
+    ],
+
+    itinerary: [
+      {
+        day: "Day 1",
+        title: "Pokhara to Muktinath",
+        description:
+          "Travel from Pokhara through Jomsom and the beautiful Kali Gandaki region before reaching Muktinath.",
+      },
+      {
+        day: "Day 2",
+        title: "Muktinath to Pokhara",
+        description:
+          "Visit Muktinath Temple in the morning and return to Pokhara through the scenic Himalayan route.",
+      },
+    ],
+  },
+];

@@ -1,23 +1,19 @@
-import React from "react";
-import { BookingProgessStepper } from "../components/booking/BookingProgessStepper";
-import { AddonSelector } from "../components/booking/AddonSelector";
-import { TravelerForm } from "../components/booking/TravelerForm";
-import { BookingSummary } from "../components/booking/BookingSummary";
-import { TripOptions } from "../components/booking/TripOptions";
+import { BookingHeader } from "../components/booking/BookingHeader.jsx";
+import { BookingHero } from "../components/booking/BookingHero";
+import { booking } from "../data/bookingData.js";
 
 export const BookingPage = () => {
+  const bookingData = booking[0];
   return (
-    <div className="min-h-screen bg-slate-100 font-sans text-[#28364c] pb-10">
-      <div className="max-w-7xl mx-auto px-6 pt-10">
-        <BookingProgessStepper currentStep={2} />
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 mt-8">
-          <div className="lg:col-span-8 space-y-8">
-            <TripOptions />
-            <AddonSelector />
-            <TravelerForm />
-          </div>
-          <div className="lg:col-span-4 sticky top-28">
-            <BookingSummary />
+    <div className="min-h-screen bg-[#FAF8F5]">
+      {/* HERO */}
+      <BookingHero bookingData={bookingData} />
+
+      {/* CONTENT */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 lg:px-16 py-8 sm:py-12">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-12">
+          <div className="lg:col-span-2">
+            <BookingHeader bookingData={bookingData} />
           </div>
         </div>
       </div>
