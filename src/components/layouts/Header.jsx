@@ -43,8 +43,8 @@ export const Header = () => {
                 </NavLink>
               </li>
               <li>
-                <NavLink className={navLinkClass} to="/blog">
-                  Blog
+                <NavLink className={navLinkClass} to="/contact">
+                  Contact Us
                 </NavLink>
               </li>
               <li>
@@ -73,7 +73,7 @@ export const Header = () => {
           <button
             type="button"
             onClick={toogleMenu}
-            className="bg-[#28364c] border border-[#28364c] text-center text-white rounded-full p-2 text-xl md:hidden"
+            className="bg-[#28364c] border border-[#28364c] text-center text-white rounded-full p-2 text-xl md:hidden hover:bg-[#1F2937]"
           >
             <RxHamburgerMenu />
           </button>
