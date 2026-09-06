@@ -47,7 +47,9 @@ export const Contact = () => {
 
       {/* Contact Map */}
       <section>
-        <h2 className="text-2xl font-semibold text-[#111]">Contact Map</h2>
+        <h2 className=" text-2xl md:text-3xl font-semibold text-[#111]">
+          Contact Map
+        </h2>
 
         <div className="grid grid-cols-1 md:grid-cols-2 mt-10 md:mt-3 w-full overflow-hidden bg-white sm:h-[400px]">
           <div></div>

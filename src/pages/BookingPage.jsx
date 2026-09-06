@@ -8,9 +8,16 @@ import { BookingOverView } from "../components/booking/BookingOverView.jsx";
 import { BookingIncludes } from "../components/booking/BookingIncludes.jsx";
 import { BookingItinerary } from "../components/booking/BookingItinerary.jsx";
 import { BookingCard } from "../components/booking/BookingCard.jsx";
+import { Navigate, useParams } from "react-router-dom";
 
 export const BookingPage = () => {
-  const bookingData = booking[0];
+  const { id } = useParams();
+  console.log("Destination Id:", id);
+  const bookingData = booking.find((item) => item.id === Number(id));
+
+  if (!bookingData) {
+    return <Navigate to="/destination" replace />;
+  }
 
   const [activeTab, setActiveTab] = useState("overview");
 

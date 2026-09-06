@@ -1,8 +1,12 @@
 import { FaMapMarkerAlt, FaStar } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 export const DestinationCard = ({ destination }) => {
   return (
-    <div className="group relative overflow-hidden rounded-4xl h-96 w-full transition-all duration-300 hover:-translate-y-2 hover:shadow-xl">
+    <Link
+      to={`/booking/${destination.id}`}
+      className="group relative overflow-hidden rounded-4xl h-96 w-full transition-all duration-300 hover:-translate-y-2 hover:shadow-xl"
+    >
       {/* Image */}
       <img
         src={destination.image}
@@ -32,6 +36,6 @@ export const DestinationCard = ({ destination }) => {
           </div>
         </div>
       </div>
-    </div>
+    </Link>
   );
 };

@@ -4,7 +4,7 @@ export const BookingOverView = ({ bookingData }) => {
   return (
     <div>
       <h3 className="text-lg font-semibold text-[#3A2D26] mb-3">
-        About This Package
+        About {bookingData.name}
       </h3>
 
       <div>

@@ -64,7 +64,7 @@ export const Header = () => {
               />
               <IoSearch className="absolute text-2xl sm:right-4 right-4 top-1/2 -translate-y-1/2 text-gray-400" />
             </div>
-            <NavLink to="/booking">
+            <NavLink to="destination">
               <Button variant="primary" className="w-32 cursor-pointer">
                 Book Now
               </Button>

@@ -12,7 +12,7 @@ export const BookingItinerary = ({ bookingData }) => {
             <h4 className="text-lg font-semibold text-[#3A2D26] mt-1">
               {item.title}
             </h4>
-            <p className="text-[#433833] mt-2 leading-relaxed]">
+            <p className="text-[#433833] mt-2 leading-relaxed">
               {item.description}
             </p>
           </div>

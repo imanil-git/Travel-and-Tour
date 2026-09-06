@@ -63,7 +63,7 @@ export const BookingCard = ({
           type="button"
           disabled={!travelDate}
           onClick={() => {
-            alert(`Booking ${traveler(s)} for ${travelDate}`);
+            alert(`Booking ${travelers} traveler(s) for ${travelDate}`);
           }}
           className="w-full bg-[#28364c] text-white py-3 rounded-xl font-medium hover:bg-[#3A2D26] transition-all duration-300 hover:shadow-lg disabled:cursor-not-allowed"
         >

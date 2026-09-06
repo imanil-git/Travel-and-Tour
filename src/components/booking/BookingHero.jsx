@@ -1,4 +1,3 @@
-import Boudhanath from "../../assets/Boudhanath.jpg";
 import { Breadcrumb } from "./common/Breadcrumb";
 
 export const BookingHero = ({ bookingData }) => {
@@ -6,7 +5,7 @@ export const BookingHero = ({ bookingData }) => {
     <section
       className="relative h-[50vh] w-full bg-cover bg-center bg-no-repeat flex items-center justify-center rounded-3xl px-4 sm:px-10 lg:px-16"
       style={{
-        backgroundImage: `url(${Boudhanath})`,
+        backgroundImage: `url(${bookingData.image})`,
       }}
     >
       {/* Dark Overlay */}
@@ -15,10 +14,10 @@ export const BookingHero = ({ bookingData }) => {
       {/* Content */}
       <div className="relative z-10 text-center text-white px-4">
         <span className="text-4xl sm:text-5xl md:text-6xl font-medium mb-5 tracking-wide">
-          PackageDetail
+          {bookingData.name}
         </span>
 
-        <Breadcrumb bookingTitle={bookingData.title} />
+        <Breadcrumb bookingTitle={bookingData.name} />
       </div>
     </section>
   );
