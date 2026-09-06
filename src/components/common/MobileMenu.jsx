@@ -45,8 +45,8 @@ export const MobileMenu = () => {
           </NavLink>
         </li>
         <li>
-          <NavLink className={navLinkClass} to="/blog">
-            Blog
+          <NavLink className={navLinkClass} to="/contact">
+            Contact Us
           </NavLink>
         </li>
         <li>

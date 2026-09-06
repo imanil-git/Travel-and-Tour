@@ -5,6 +5,7 @@ import { DefaultLayout } from "../components/layouts/DefaultLayout";
 import { About } from "../pages/About";
 import { Destination } from "../pages/Destination";
 import { BookingPage } from "../pages/BookingPage";
+import { Contact } from "../pages/Contact";
 
 export const AppRoutes = () => {
   return (
@@ -16,6 +17,7 @@ export const AppRoutes = () => {
           <Route path="destination" element={<Destination />} />
           <Route path="booking" element={<BookingPage />} />
           <Route path="about" element={<About />} />
+          <Route path="/contact" element={<Contact />} />
         </Route>
         {/* Private Pages */}
       </Routes>
