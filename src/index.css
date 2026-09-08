@@ -1,8 +1,8 @@
 @import "tailwindcss";
 
 @font-face {
-  font-family: "Valve";
-  src: url("../public/valve\ bd.otf") format("opentype");
+  font-family: "Hakuna-Sans";
+  src: url("../public/Hakuna-Sans.otf") format("opentype");
   font-display: swap;
 }
 
@@ -13,8 +13,8 @@
 }
 
 @font-face {
-  font-family: "Aquawa-Pro";
-  src: url("../public/Aquawax-Pro-DemiBold-trial.ttf") format("truetype");
+  font-family: "Garet-Book";
+  src: url("../public/Garet-Book.ttf") format("truetype");
   font-display: swap;
 }
 
@@ -24,18 +24,11 @@
 }
 
 body {
-  font-family: "Aquawa-Pro", sans-serif;
-  font-size: 16px;
+  font-family: "Garet-Book", sans-serif;
+  font-weight: bolder;
+  font-size: 15px;
 }
 /* Heading */
 span {
-  font-family: "Valve", sans-serif;
+  font-family: "Hakuna-Sans", sans-serif;
 }
-
-/* a,
-p,
-li,
-div,
-button {
-  font-family: "Aquawa-Pro", sans-serif;
-} */
