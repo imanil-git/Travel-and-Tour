@@ -10,6 +10,7 @@ export const booking = [
   {
     id: 1,
     name: "Pokhara",
+    slug: "pokhara",
     title: "Explore the Beautiful City of Pokhara",
     location: "Gandaki, Nepal",
     region: "Gandaki",
@@ -70,6 +71,7 @@ export const booking = [
   {
     id: 2,
     name: "Kathmandu",
+    slug: "kathmandu",
     title: "Discover the Cultural Heart of Nepal",
     location: "Bagmati, Nepal",
     region: "Bagmati",
@@ -123,6 +125,7 @@ export const booking = [
   {
     id: 3,
     name: "Mustang",
+    slug: "mustang",
     title: "Discover the Mystical Landscapes of Mustang",
     location: "Gandaki, Nepal",
     region: "Gandaki",
@@ -189,6 +192,7 @@ export const booking = [
   {
     id: 4,
     name: "Everest Region",
+    slug: "everest-region",
     title: "Experience the Legendary Everest Region",
     location: "Solukhumbu, Nepal",
     region: "Solukhumbu",
@@ -273,6 +277,7 @@ export const booking = [
   {
     id: 5,
     name: "Chitwan",
+    slug: "chitwan",
     title: "Wildlife Adventure in Chitwan",
     location: "Bagmati, Nepal",
     region: "Bagmati",
@@ -333,6 +338,7 @@ export const booking = [
   {
     id: 6,
     name: "Annapurna",
+    slug: "annapurna",
     title: "Adventure Through the Annapurna Himalayas",
     location: "Gandaki, Nepal",
     region: "Gandaki",
@@ -405,6 +411,7 @@ export const booking = [
   {
     id: 7,
     name: "Lumbini",
+    slug: "lumbini",
     title: "Journey to the Birthplace of Buddha",
     location: "Rupandehi, Nepal",
     region: "Rupandehi",
