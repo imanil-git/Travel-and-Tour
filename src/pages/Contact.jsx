@@ -51,16 +51,13 @@ export const Contact = () => {
           Contact Map
         </h2>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 mt-10 md:mt-3 w-full overflow-hidden bg-white sm:h-[400px]">
-          <div></div>
-          <div className="h-96 md:h-full">
-            <iframe
-              title="TOUR AND TRAVEL Location Map"
-              src="https://www.google.com/maps?q=Nepal&z=6&output=embed"
-              className="h-full w-full border-0 rounded-2xl"
-              loading="lazy"
-            />
-          </div>
+        <div className="h-96 mt-10 md:mt-3 w-full overflow-hidden bg-white sm:h-[400px]">
+          <iframe
+            title="TOUR AND TRAVEL Location Map"
+            src="https://www.google.com/maps?q=Nepal&z=7&output=embed"
+            className="h-full w-full border-0 rounded-2xl"
+            loading="lazy"
+          />
         </div>
       </section>
     </div>

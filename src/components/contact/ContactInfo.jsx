@@ -10,9 +10,9 @@ const contactDetails = [
     title: "Our Office",
     content: (
       <>
-        WANDER.PH HQ, Metro Manila,
+        Tour and Travel, Nepal,
         <br />
-        Philippines
+        Pokhara
       </>
     ),
   },
@@ -26,7 +26,7 @@ const contactDetails = [
     id: 3,
     icon: FaEnvelope,
     title: "Email Us",
-    content: "support@wander.ph",
+    content: "support@tourandtravel.np",
   },
 ];
 
