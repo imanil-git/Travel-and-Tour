@@ -10,104 +10,7 @@ import Annapurna from "../assets/destinations/Annapurna.jpg";
 import Lumbini from "../assets/destinations/Lumbini.jpg";
 import { FaSlidersH, FaTimes } from "react-icons/fa";
 import { DestinationFilter } from "../components/destionations/DestinationFilter";
-
-export const destinations = [
-  {
-    id: 1,
-    name: "Pokhara",
-    location: "Gandaki, Nepal",
-    image: Pokhara,
-    category: "Nature",
-    rating: 4.9,
-    price: 4999,
-    reviews: 1200,
-    region: "Gandaki",
-    activities: ["Sightseeing", "Nature"],
-  },
-  {
-    id: 2,
-    name: "Kathmandu",
-    location: "Bagmati, Nepal",
-    description:
-      "Explore ancient temples, historical monuments and vibrant local culture.",
-    image: Kathmandu,
-    category: "Culture",
-    rating: 4.8,
-    price: 3200,
-    reviews: 950,
-    region: "Bagmati",
-    activities: ["Sightseeing", "Culture"],
-  },
-  {
-    id: 3,
-    name: "Mustang",
-    location: "Gandaki, Nepal",
-    description:
-      "Discover the mysterious landscapes, caves and ancient villages of Mustang.",
-    image: Mustang,
-    category: "Adventure",
-    rating: 4.9,
-    price: 8900,
-    reviews: 850,
-    region: "Gandaki",
-    activities: ["Trekking", "Adventure"],
-  },
-  {
-    id: 4,
-    name: "Everest Region",
-    location: "Solukhumbu, Nepal",
-    description:
-      "Experience the world's highest mountain and legendary Himalayan trails.",
-    image: Everest,
-    category: "Trekking",
-    rating: 5.0,
-    price: 12500,
-    reviews: 2100,
-    region: "Solukhumbu",
-    activities: ["Trekking", "Hiking"],
-  },
-  {
-    id: 5,
-    name: "Chitwan",
-    location: "Bagmati, Nepal",
-    description:
-      "Experience wildlife, jungle safaris and the natural beauty of Chitwan.",
-    image: Chitwan,
-    category: "Wildlife",
-    rating: 4.7,
-    price: 4250,
-    reviews: 780,
-    region: "Bagmati",
-    activities: ["Wildlife", "Safari"],
-  },
-  {
-    id: 6,
-    name: "Annapurna",
-    location: "Gandaki, Nepal",
-    description:
-      "Walk through spectacular Himalayan landscapes and traditional villages.",
-    image: Annapurna,
-    category: "Trekking",
-    rating: 4.9,
-    price: 6500,
-    reviews: 1500,
-    region: "Gandaki",
-    activities: ["Trekking", "Hiking"],
-  },
-  {
-    id: 7,
-    name: "Lumbini",
-    location: "Rupandehi, Nepal",
-    description: "It is the birthplace of Gautam Buddha, Light of the Asia",
-    image: Lumbini,
-    category: "Culture",
-    rating: 4.8,
-    price: 3500,
-    reviews: 620,
-    region: "Rupandehi",
-    activities: ["Culture", "Sightseeing"],
-  },
-];
+import { booking } from "../data/bookingData";
 
 export const Destination = () => {
   // Mobile drawer state
@@ -133,16 +36,16 @@ export const Destination = () => {
   };
 
   const categories = useMemo(
-    () => ["All", ...new Set(destinations.map((d) => d.category))],
+    () => ["All", ...new Set(booking.map((d) => d.category))],
     [],
   );
   const regions = useMemo(
-    () => ["All", ...new Set(destinations.map((d) => d.region))],
+    () => ["All", ...new Set(booking.map((d) => d.region))],
     [],
   );
 
   const filteredDestinations = useMemo(() => {
-    const result = destinations.filter((destination) => {
+    const result = booking.filter((destination) => {
       const matchesCategory =
         category === "All" || destination.category === category;
 

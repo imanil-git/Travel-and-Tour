@@ -11,9 +11,9 @@ import { BookingCard } from "../components/booking/BookingCard.jsx";
 import { Navigate, useParams } from "react-router-dom";
 
 export const BookingPage = () => {
-  const { id } = useParams();
-  console.log("Destination Id:", id);
-  const bookingData = booking.find((item) => item.id === Number(id));
+  const { slug } = useParams();
+  console.log("Destination:", slug);
+  const bookingData = booking.find((item) => item.slug === slug);
 
   if (!bookingData) {
     return <Navigate to="/destination" replace />;
