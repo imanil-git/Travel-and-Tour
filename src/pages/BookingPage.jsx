@@ -20,7 +20,7 @@ export default function BookingPage() {
           <div className="lg:col-span-8">
             {step === 1 && <DestinationStep destinations={booking} />}
             {step === 2 && <CustomizerStep addOns={addOns} />}
-            {step === 3 && <ConfirmationStep />}
+            {step === 3 && <ConfirmationStep addOns={addOns} />}
           </div>
 
           <div className="lg:col-span-4">
