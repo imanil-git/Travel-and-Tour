@@ -2,29 +2,87 @@ import { todayLocal } from "../../utils/date";
 import { useState } from "react";
 import { useBookingStore } from "../../store/useBookingStore";
 import { Input } from "./ui/Input";
+import { sendBookingConformation } from "../../services/emailService.js";
 
-export function ConfirmationStep() {
-  const { travelerInfo, updateTravelerInfo, prevStep } = useBookingStore();
+export function ConfirmationStep({ addOns = [] }) {
+  const {
+    travelerInfo,
+    selectedDestination,
+    guests,
+    selectedAddOns,
+    updateTravelerInfo,
+    getGrandTotal,
+    prevStep,
+  } = useBookingStore();
 
-  const [reviewed, setReviewed] = useState(false);
-  const handleSubmit = (e) => {
+  const [status, setStatus] = useState("idle");
+  const [message, setMessage] = useState("");
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    setReviewed(true);
+
+    setStatus("sending");
+    setMessage("");
+
+    const selectedAddOnNames = addOns
+      .filter((addOn) => selectedAddOns.includes(addOn.id))
+      .map((addOn) => addOn.name)
+      .join(", ");
+
+    const bookingReference = `TRAVEL-${Date.now()}`;
+
+    const templateParams = {
+      customer_name: travelerInfo.fullName,
+      customer_email: travelerInfo.email,
+      travel_date: travelerInfo.travelDate,
+      phone: travelerInfo.phone,
+      destination: selectedDestination.name,
+      package_title: selectedDestination.title,
+      location: selectedDestination.location,
+      guests,
+      add_ons: selectedAddOnNames || "No add-ons selected",
+      total_price: getGrandTotal(addOns).toLocaleString(),
+      booking_reference: bookingReference,
+    };
+
+    console.log("Traveler information:", travelerInfo);
+    console.log("Selected destination:", selectedDestination);
+    console.log("Selected add-on IDs:", selectedAddOns);
+    console.log("Sending booking details:", templateParams);
+
+    try {
+      const response = await sendBookingConformation(templateParams);
+
+      console.log("EmailJS success:", response);
+
+      setStatus("success");
+      setMessage(
+        `Booking request sent successfully. Reference: ${bookingReference}`,
+      );
+    } catch (error) {
+      console.error("EmailJS failed:", error);
+
+      setStatus("error");
+      setMessage(
+        error?.text ||
+          error?.message ||
+          "The confirmation email could not be sent.",
+      );
+    }
   };
 
+  const isSending = status === "sending";
+  const isSuccess = status === "success";
+
   return (
-    <form
-      onChange={() => setReviewed(false)}
-      onSubmit={handleSubmit}
-      className="space-y-6"
-    >
+    <form onSubmit={handleSubmit} className="space-y-6">
       <div className="bg-white p-6 rounded-2xl border border-slate-200 space-y-4">
         <h3 className="text-xs font-bold text-slate-900 uppercase tracking-wider">
           Lead Traveler Information
         </h3>
         <Input
           label="Full Name"
-          placeholder="e.g. Anil Rai"
+          placeholder="e.g. John Doe"
           value={travelerInfo.fullName}
           onChange={(e) => updateTravelerInfo("fullName", e.target.value)}
           required
@@ -58,13 +116,15 @@ export function ConfirmationStep() {
       </div>
 
       <p className="rounded-xl bg-amber-50 p-4 text-sm text-amber-900">
-        Trip preview only. Online reservations and payments are not connected
-        yet. No booking will be placed or payment collected.
+        Submitting this form send a booking request. Our travel team will
+        contact you after checking availability.
       </p>
-      {reviewed && (
-        <p role="status" className="rounded-xl bg-slate-100 p-4">
-          Your trip details are ready to review. Nothing has been sent; contact
-          the travel team to confirm availability.
+      {message && (
+        <p
+          role="status"
+          className={`rounded-xl border p-4 text-sm ${status === "success" ? "border-green-200 bg-green-50 text-green-700" : status === "error" ? "border-red-200 bg-red-50 text-red-700" : "border-slate-200 bg-slate-50 text-slate-700"}`}
+        >
+          {message}
         </p>
       )}
 
@@ -72,15 +132,21 @@ export function ConfirmationStep() {
         <button
           type="button"
           onClick={prevStep}
+          disabled={isSending}
           className="bg-slate-100 text-slate-700 text-xs font-bold px-5 py-3 rounded-full"
         >
           ← Back
         </button>
         <button
           type="submit"
+          disabled={isSending || isSuccess}
           className="bg-slate-900 text-white text-xs font-bold px-8 py-3 rounded-full hover:bg-slate-800 shadow-md"
         >
-          Review Trip
+          {isSending
+            ? "Sending..."
+            : isSuccess
+              ? "Booking Sent"
+              : "Confirm Booking"}
         </button>
       </div>
     </form>

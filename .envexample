@@ -1,0 +1,3 @@
+VITE_EMAILJS_SERVICE_ID=keep_your_service_id
+VITE_EMAILJS_TEMPLATE_ID=keep_your_template_id
+VITE_EMAILJS_PUBLIC_KEY=keep_your_public_key
