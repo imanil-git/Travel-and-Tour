@@ -1,6 +1,5 @@
-import React from "react";
 
-export const BookingSummary = ({ bookingData }) => {
+export const DetailSummary = ({ bookingData }) => {
   return (
     <div className="space-y-3 mb-6 p-4 bg-[#FAF8F5] rounded-xl">
       <div className="flex justify-between gap-4 text-sm">

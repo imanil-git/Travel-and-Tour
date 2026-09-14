@@ -1,44 +1,14 @@
-import React from "react";
+import { useId } from "react";
 
-const commonClasses =
-  "w-full rounded-xl border border-gray-300 bg-white px-4 py-2.5 text-sm outline-none transition focus:border-[#18263b] foxus:ring-1 focus:ring[#18263b]";
-
-export const InputField = ({
-  label,
-  name,
-  type = "text",
-  value,
-  onChange,
-  placeholder = "",
-  textarea = false,
-}) => {
-  return (
-    <div className="space-y-1.5">
-      <label htmlFor={name} className="block text-sm font-semibold text-[#222]">
-        {label}
-      </label>
-
-      {textarea ? (
-        <textarea
-          id={name}
-          name={name}
-          value={value}
-          onChange={onChange}
-          placeholder={placeholder}
-          rows={4}
-          className={`${commonClasses} resize-none`}
-        />
-      ) : (
-        <input
-          id={name}
-          name={name}
-          type={type}
-          value={value}
-          onChange={onChange}
-          placeholder={placeholder}
-          className={commonClasses}
-        />
-      )}
-    </div>
-  );
+export const InputField = ({ label, id, name, type = "text", textarea = false, error, className = "", ...props }) => {
+  const generatedId = useId();
+  const fieldId = id || name || generatedId;
+  const Element = textarea ? "textarea" : "input";
+  return <div className="space-y-1.5">
+    <label htmlFor={fieldId} className="block text-sm font-semibold text-slate-800">{label}</label>
+    <Element id={fieldId} name={name} {...(textarea ? { rows: 4 } : { type })}
+      aria-invalid={error ? true : undefined} aria-describedby={error ? `${fieldId}-error` : undefined}
+      className={`w-full rounded-xl border border-slate-300 bg-white px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-slate-700 ${className}`} {...props} />
+    {error && <p id={`${fieldId}-error`} className="text-sm text-red-700">{error}</p>}
+  </div>;
 };

@@ -1,4 +1,4 @@
-export const BookingTabs = ({ activeTab, setActiveTab }) => {
+export const DetailTabs = ({ activeTab, setActiveTab }) => {
   const tabs = ["overview", "includes", "itinerary"];
   return (
     <div className="border-b border-[#D7CDC2] mb-6">
@@ -10,7 +10,7 @@ export const BookingTabs = ({ activeTab, setActiveTab }) => {
               key={tab}
               type="button"
               onClick={() => setActiveTab(tab)}
-              className={`pb-3 text-sm font-medium capitalize transition-colors duration-300\ border-b-2 ${
+              className={`pb-3 text-sm font-medium capitalize transition-colors duration-300 border-b-2 ${
                 isActive
                   ? "text-[#28364c] border-[#28364c]"
                   : "text-[#433833] border-transparent hover:text-[#28364c]"

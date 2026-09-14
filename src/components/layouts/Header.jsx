@@ -1,85 +1,53 @@
-import React from "react";
 import { Link, NavLink } from "react-router-dom";
-import Logo from "../../assets/Tour.webp";
-import { TbLogin2 } from "react-icons/tb";
-import { IoSearch } from "react-icons/io5";
-import { RxHamburgerMenu } from "react-icons/rx";
+import { Menu, X } from "lucide-react";
 import { useMenuStore } from "../../store/useMenuStore";
 import { MobileMenu } from "../common/MobileMenu";
 import { Button } from "../common/Button";
-
+import { DestinationSearch } from "../common/DestinationSearch";
+import { navigation } from "../../data/navigation";
 export const Header = () => {
   const { toogleMenu, isMenuOpen } = useMenuStore();
-  const navLinkClass = ({ isActive }) =>
-    `transition-colors duration-200 ${
-      isActive
-        ? "text-gray-400 font-semibold"
-        : "text-black hover:text-gray-700"
-    }`;
-
   return (
-    <>
-      <nav className="w-full bg-white">
-        <div className="mx-auto flex justify-between items-center h-20 text-center">
-          {/* Left Side */}
-          <div className=" flex items-center gap-4 lg:flex lg:gap-6">
-            <span className="self-center text-xl text-heading font-semibold whitespace-nowrap font-valve">
-              Tour And Travel
-            </span>
-            <ul className="hidden items-center gap-4 md:flex md:gap-3">
-              <li>
-                <NavLink className={navLinkClass} to="/" aria-current="page">
-                  Home
-                </NavLink>
-              </li>
-              <li>
-                <NavLink className={navLinkClass} to="/destination">
-                  Destination
-                </NavLink>
-              </li>
-              <li>
-                <NavLink className={navLinkClass} to="/popular">
-                  Popular
-                </NavLink>
-              </li>
-              <li>
-                <NavLink className={navLinkClass} to="/contact">
-                  Contact Us
-                </NavLink>
-              </li>
-              <li>
-                <NavLink className={navLinkClass} to="/about">
-                  About
-                </NavLink>
-              </li>
-            </ul>
-          </div>
-          <div className="hidden md:flex items-center gap-4">
-            <div className="relative w-fit">
-              <input
-                type="text"
-                id="input-group-1"
-                placeholder="Search Destinations"
-                className="bg-[#efeff1] rounded-4xl sm:w-56 sm:px-4 lg:w-64 px-5 py-2.5"
-              />
-              <IoSearch className="absolute text-2xl sm:right-4 right-4 top-1/2 -translate-y-1/2 text-gray-400" />
-            </div>
-            <NavLink to="destination">
-              <Button variant="primary" className="w-32 cursor-pointer">
-                Book Now
-              </Button>
+    <header className="bg-white py-5">
+      <nav
+        aria-label="Main navigation"
+        className="flex items-center justify-between gap-5"
+      >
+        <Link to="/" className="shrink-0 text-lg font-bold tracking-tight">
+          Tour and Travel<span className="text-emerald-700">.</span>
+        </Link>
+        <div className="hidden items-center gap-5 xl:flex">
+          {navigation.map(({ to, label }) => (
+            <NavLink
+              key={to}
+              to={to}
+              end={to === "/"}
+              className={({ isActive }) =>
+                `text-sm ${isActive ? "text-emerald-800 font-bold" : "text-slate-600 hover:text-slate-900"}`
+              }
+            >
+              {label}
             </NavLink>
-          </div>
-          <button
-            type="button"
-            onClick={toogleMenu}
-            className="bg-[#28364c] border border-[#28364c] text-center text-white rounded-full p-2 text-xl md:hidden hover:bg-[#1F2937]"
-          >
-            <RxHamburgerMenu />
-          </button>
+          ))}
         </div>
+        <div className="hidden items-center gap-3 xl:flex">
+          <DestinationSearch />
+          <Button to="/booking" className="shrink-0 text-sm">
+            Plan a trip
+          </Button>
+        </div>
+        <button
+          type="button"
+          aria-label={isMenuOpen ? "Close navigation" : "Open navigation"}
+          aria-expanded={isMenuOpen}
+          aria-controls="mobile-navigation"
+          onClick={toogleMenu}
+          className="rounded-full bg-slate-900 p-3 text-white xl:hidden"
+        >
+          {isMenuOpen ? <X size={20} /> : <Menu size={20} />}
+        </button>
       </nav>
       {isMenuOpen && <MobileMenu />}
-    </>
+    </header>
   );
 };

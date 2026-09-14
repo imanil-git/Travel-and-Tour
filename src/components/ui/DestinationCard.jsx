@@ -9,6 +9,8 @@ export const DestinationCard = ({ destination }) => {
     >
       {/* Image */}
       <img
+                loading="lazy"
+                decoding="async"
         src={destination.image}
         alt={destination.name}
         className="h-full w-full object-cover transition duration-700 group-hover:scale-110"

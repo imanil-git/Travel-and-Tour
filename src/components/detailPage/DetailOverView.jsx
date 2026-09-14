@@ -1,6 +1,5 @@
-import React from "react";
 
-export const BookingOverView = ({ bookingData }) => {
+export const DetailOverView = ({ bookingData }) => {
   return (
     <div>
       <h3 className="text-lg font-semibold text-[#3A2D26] mb-3">

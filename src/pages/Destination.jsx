@@ -1,18 +1,14 @@
-import React, { useMemo, useState } from "react";
+import { useSearchParams } from "react-router-dom";
+import { useMemo, useState } from "react";
 import { SectionTitle } from "../components/common/SectionTitle";
 import { DestinationCard } from "../components/ui/DestinationCard";
-import Pokhara from "../assets/destinations/Pokhara.jpg";
-import Kathmandu from "../assets/destinations/Kathmandu.jpg";
-import Mustang from "../assets/destinations/Mustang.jpg";
-import Everest from "../assets/destinations/Everest.jpg";
-import Chitwan from "../assets/destinations/Chitwan.jpg";
-import Annapurna from "../assets/destinations/Annapurna.jpg";
-import Lumbini from "../assets/destinations/Lumbini.jpg";
-import { FaSlidersH, FaTimes } from "react-icons/fa";
-import { DestinationFilter } from "../components/destionations/DestinationFilter";
+import { FaSlidersH } from "react-icons/fa";
+import { DestinationFilter } from "../components/destinations/DestinationFilter";
 import { booking } from "../data/bookingData";
 
 export const Destination = () => {
+  const [searchParams] = useSearchParams();
+  const query = (searchParams.get("q") || "").trim().toLowerCase();
   // Mobile drawer state
   const [isFilterOpen, setIsFilterOpen] = useState(false);
 
@@ -59,6 +55,7 @@ export const Destination = () => {
       const matchesRating = destination.rating >= minRating;
 
       return (
+        `${destination.name} ${destination.title} ${destination.location}`.toLowerCase().includes(query) &&
         matchesCategory &&
         matchesRegion &&
         matchesActivity &&
@@ -83,7 +80,7 @@ export const Destination = () => {
           return b.reviews - a.reviews;
       }
     });
-  }, [category, region, activity, maxPrice, minRating, sortBy]);
+  }, [category, region, activity, maxPrice, minRating, sortBy, query]);
 
   const filterProps = {
     sortBy,

@@ -1,4 +1,3 @@
-import React from "react";
 import { FaEnvelope, FaLocationDot, FaPhone } from "react-icons/fa6";
 import { ContactIcons } from "./ContactIcons";
 import { ContactInfoItem } from "./ContactInfoItem";
@@ -20,13 +19,13 @@ const contactDetails = [
     id: 2,
     icon: FaPhone,
     title: "Call Us",
-    content: "+63 9XX XXX XXXX",
+    content: "Phone details coming soon",
   },
   {
     id: 3,
     icon: FaEnvelope,
     title: "Email Us",
-    content: "support@tourandtravel.np",
+    content: "Email details coming soon",
   },
 ];
 

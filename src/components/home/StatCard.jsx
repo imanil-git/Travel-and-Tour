@@ -1,4 +1,3 @@
-import React from "react";
 
 export const StatCard = ({ stat }) => {
   const Icon = stat.icon;
