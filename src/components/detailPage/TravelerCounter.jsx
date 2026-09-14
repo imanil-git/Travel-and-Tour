@@ -21,6 +21,7 @@ export const TravelerCounter = ({ travelers, setTravelers, maxTravelers }) => {
       <div className="flex items-center gap-3">
         <button
           type="button"
+          aria-label="Remove traveler"
           onClick={decrease}
           disabled={travelers <= 1}
           className="w-10 h-10 rounded-full border border-[#28364c] flex items-center justify-center hover:border-[#433833] hover:bg-[#433833] hover:text-white transition-colors disabled:opacity-40 disabled:cursor-not-allowed"
@@ -32,6 +33,7 @@ export const TravelerCounter = ({ travelers, setTravelers, maxTravelers }) => {
         </span>
         <button
           type="button"
+          aria-label="Add traveler"
           onClick={increase}
           disabled={travelers >= maxTravelers}
           className="w-10 h-10 rounded-full border border-[#28364c] flex items-center justify-center hover:border-[#433833] hover:bg-[#433833] hover:text-white transition-colors disabled:opacity-40 disabled:cursor-not-allowed"

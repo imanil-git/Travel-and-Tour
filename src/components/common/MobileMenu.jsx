@@ -1,60 +1,13 @@
-import { IoSearch } from "react-icons/io5";
-import { useMenuStore } from "../../store/useMenuStore";
-import { Button } from "./Button";
 import { NavLink } from "react-router-dom";
-
+import { useMenuStore } from "../../store/useMenuStore";
+import { navigation } from "../../data/navigation";
+import { DestinationSearch } from "./DestinationSearch";
+import { Button } from "./Button";
 export const MobileMenu = () => {
-  const { toogleMenu, closeMenu } = useMenuStore();
-  const navLinkClass = ({ isActive }) => {
-    `transition-colors duration-200 ${
-      isActive
-        ? "text-gray-400 font-semibold"
-        : "text-black hover:text-gray-700"
-    }`;
-  };
-  return (
-    <section className="flex flex-col gap-4 mb-4 md:hidden">
-      <div className="flex flex-col gap-6 md:justify-between">
-        <div className="relative w-fit">
-          <input
-            type="text"
-            id="input-group-1"
-            placeholder="Search Destinations"
-            className="bg-[#efeff1] rounded-4xl w-80 px-5 py-2.5"
-          />
-          <IoSearch className="absolute text-2xl right-4 top-1/2 -translate-y-1/2 text-gray-400" />
-        </div>
-        <Button variant="primary" className="w-28">
-          Book Now
-        </Button>
-      </div>
-      <ul className="items-center gap-4">
-        <li>
-          <NavLink className={navLinkClass} to="/" aria-current="page">
-            Home
-          </NavLink>
-        </li>
-        <li>
-          <NavLink className={navLinkClass} to="/destination">
-            Destination
-          </NavLink>
-        </li>
-        <li>
-          <NavLink className={navLinkClass} to="/popular">
-            Popular
-          </NavLink>
-        </li>
-        <li>
-          <NavLink className={navLinkClass} to="/contact">
-            Contact Us
-          </NavLink>
-        </li>
-        <li>
-          <NavLink className={navLinkClass} to="/about">
-            About
-          </NavLink>
-        </li>
-      </ul>
-    </section>
-  );
+  const closeMenu = useMenuStore((state) => state.closeMenu);
+  return <nav id="mobile-navigation" aria-label="Mobile navigation" onKeyDown={(event) => { if (event.key === "Escape") { closeMenu(); document.querySelector('[aria-controls="mobile-navigation"]')?.focus(); } }} className="mt-5 space-y-4 rounded-2xl border border-slate-200 p-4 xl:hidden">
+    <DestinationSearch onSearch={closeMenu} />
+    <div className="flex flex-col gap-1">{navigation.map(({to, label}) => <NavLink key={to} to={to} end={to === "/"} onClick={closeMenu} className={({ isActive }) => `rounded-lg px-3 py-2 ${isActive ? "bg-slate-100 font-bold" : "text-slate-600"}`}>{label}</NavLink>)}</div>
+    <Button to="/booking" onClick={closeMenu}>Plan a trip</Button>
+  </nav>;
 };

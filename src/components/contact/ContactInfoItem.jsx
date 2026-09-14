@@ -1,4 +1,3 @@
-import React from "react";
 
 export const ContactInfoItem = ({ icon: Icon, title, children }) => {
   return (

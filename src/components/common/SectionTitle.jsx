@@ -1,4 +1,3 @@
-import React from "react";
 
 export const SectionTitle = ({ title, description, className }) => {
   return (

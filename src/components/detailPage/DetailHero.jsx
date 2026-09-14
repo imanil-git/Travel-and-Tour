@@ -1,6 +1,6 @@
 import { Breadcrumb } from "./common/Breadcrumb";
 
-export const BookingHero = ({ bookingData }) => {
+export const DetailHero = ({ bookingData }) => {
   return (
     <section
       className="relative h-[50vh] w-full bg-cover bg-center bg-no-repeat flex items-center justify-center rounded-3xl px-4 sm:px-10 lg:px-16"

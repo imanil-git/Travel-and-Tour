@@ -89,6 +89,8 @@ export const TeamMember = () => {
                 className="relative w-full h-72 md:h-96 rounded-3xl overflow-hidden"
               >
                 <img
+                loading="lazy"
+                decoding="async"
                   src={img.img}
                   alt=""
                   className="w-full h-full object-cover object-center"

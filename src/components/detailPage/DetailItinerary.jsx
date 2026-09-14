@@ -1,6 +1,5 @@
-import React from "react";
 
-export const BookingItinerary = ({ bookingData }) => {
+export const DetailItinerary = ({ bookingData }) => {
   return (
     <div>
       <h3 className="text-lg font-semibold text-[#3A2D26] mb-6">Itinerary</h3>

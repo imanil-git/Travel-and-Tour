@@ -1,5 +1,3 @@
-import { ChevronRight } from "lucide-react";
-import React from "react";
 
 export const Breadcrumb = ({ bookingTitle }) => {
   return (
@@ -9,11 +7,11 @@ export const Breadcrumb = ({ bookingTitle }) => {
       </a>
       <span className="w-4 h-4 text-gray-400">/</span>
 
-      <a className="text-lg text-[#28364c] transition-colors">Booking</a>
+      <a className="text-lg text-yellow-500 transition-colors">Booking</a>
 
       <span className="w-4 h-4 text-gray-400">/</span>
 
-      <span className="text-[#28364c]">{bookingTitle}</span>
+      <span className="text-yellow-500">{bookingTitle}</span>
     </div>
   );
 };

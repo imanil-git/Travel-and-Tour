@@ -1,41 +1,50 @@
 @import "tailwindcss";
-
-@font-face {
-  font-family: "Valve";
-  src: url("../public/valve\ bd.otf") format("opentype");
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "ProfaTrial-Thin";
-  src: url("../public/ProfaTrial-Thin.ttf") format("truetype");
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "Aquawa-Pro";
-  src: url("../public/Aquawax-Pro-DemiBold-trial.ttf") format("truetype");
-  font-display: swap;
-}
-
 @theme {
-  --font-valve: "Valve", sans-serif;
-  --font-value: "Aquawa-Pro", sans-serif;
+  --font-valve: ui-sans-serif, system-ui, sans-serif;
+  --font-value: ui-sans-serif, system-ui, sans-serif;
 }
-
+:root {
+  font-family:
+    ui-sans-serif,
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
+  color: #172b36;
+  background: #fff;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+}
 body {
-  font-family: "Aquawa-Pro", sans-serif;
+  margin: 0;
+  min-width: 320px;
   font-size: 16px;
+  line-height: 1.6;
 }
-/* Heading */
-span {
-  font-family: "Valve", sans-serif;
+button,
+input,
+textarea,
+select {
+  font: inherit;
 }
-
-/* a,
-p,
-li,
-div,
-button {
-  font-family: "Aquawa-Pro", sans-serif;
-} */
+button:not(:disabled),
+a {
+  cursor: pointer;
+}
+button:disabled {
+  opacity: 0.5;
+}
+:focus-visible {
+  outline: 3px solid #059669;
+  outline-offset: 4px;
+}
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

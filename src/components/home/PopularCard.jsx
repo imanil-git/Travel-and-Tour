@@ -1,4 +1,3 @@
-import React from "react";
 
 export const PopularCard = ({ package: packageData }) => {
   const Icon = packageData.Icon;

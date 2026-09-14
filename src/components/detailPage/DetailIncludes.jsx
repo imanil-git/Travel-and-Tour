@@ -1,7 +1,6 @@
 import { Check } from "lucide-react";
-import React from "react";
 
-export const BookingIncludes = ({ bookingData }) => {
+export const DetailIncludes = ({ bookingData }) => {
   return (
     <div>
       <h3 className="text-lg font-semibold text-[#3A2D26] mb-4">

@@ -1,70 +1,33 @@
-import { useState } from "react";
-import { BookingHeader } from "../components/booking/BookingHeader.jsx";
-import { BookingHero } from "../components/booking/BookingHero";
-import { booking } from "../data/bookingData.js";
-import { BookingInfoGrid } from "../components/booking/BookingInfoGrid.jsx";
-import { BookingTabs } from "../components/booking/BookingTabs.jsx";
-import { BookingOverView } from "../components/booking/BookingOverView.jsx";
-import { BookingIncludes } from "../components/booking/BookingIncludes.jsx";
-import { BookingItinerary } from "../components/booking/BookingItinerary.jsx";
-import { BookingCard } from "../components/booking/BookingCard.jsx";
-import { Navigate, useParams } from "react-router-dom";
+import { BookingStepper } from "../components/booking/BookingStepper";
+import { DestinationStep } from "../components/booking/DestinationStep";
+import { CustomizerStep } from "../components/booking/CustomizerStep";
+import { ConfirmationStep } from "../components/booking/ConfirmationStep";
+import { BookingSummarySidebar } from "../components/booking/BookingSummarySidebar";
+import { useBookingStore } from "../store/useBookingStore";
+import { booking } from "../data/bookingData";
 
-export const BookingPage = () => {
-  const { slug } = useParams();
-  console.log("Destination:", slug);
-  const bookingData = booking.find((item) => item.slug === slug);
+import { addOns } from "../data/addOns";
 
-  if (!bookingData) {
-    return <Navigate to="/destination" replace />;
-  }
+export default function BookingPage() {
+  const step = useBookingStore((s) => s.step);
 
-  const [activeTab, setActiveTab] = useState("overview");
-
-  const [travelDate, setTravelDate] = useState("");
-
-  const [travelers, setTravelers] = useState(1);
   return (
-    <div className="min-h-screen bg-[#FAF8F5]">
-      {/* HERO */}
-      <BookingHero bookingData={bookingData} />
+    <div className="min-h-screen py-6">
+      <div className="px-4 sm:px-10 lg:px-16">
+        <BookingStepper />
 
-      {/* CONTENT */}
-      <div className="w-full px-4 sm:px-6 md:px-8 lg:px-16 py-8 sm:py-12">
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-12">
-          {/* LEFT SIDE */}
-          <div className="lg:col-span-2">
-            <BookingHeader bookingData={bookingData} />
-
-            <BookingInfoGrid bookingData={bookingData} />
-
-            <BookingTabs activeTab={activeTab} setActiveTab={setActiveTab} />
-
-            <div className="space-y-6">
-              {activeTab === "overview" && (
-                <BookingOverView bookingData={bookingData} />
-              )}
-              {activeTab === "includes" && (
-                <BookingIncludes bookingData={bookingData} />
-              )}
-              {activeTab === "itinerary" && (
-                <BookingItinerary bookingData={bookingData} />
-              )}
-            </div>
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+          <div className="lg:col-span-8">
+            {step === 1 && <DestinationStep destinations={booking} />}
+            {step === 2 && <CustomizerStep addOns={addOns} />}
+            {step === 3 && <ConfirmationStep />}
           </div>
 
-          {/* RIGHT SIDE */}
-          <aside>
-            <BookingCard
-              bookingData={bookingData}
-              travelDate={travelDate}
-              setTravelDate={setTravelDate}
-              travelers={travelers}
-              setTravelers={setTravelers}
-            />
-          </aside>
+          <div className="lg:col-span-4">
+            <BookingSummarySidebar addOns={addOns} />
+          </div>
         </div>
       </div>
     </div>
   );
-};
+}

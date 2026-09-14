@@ -1,26 +1,24 @@
-import React from "react";
 import { Button } from "../common/Button";
-import image from "../../assets/PopularCard.jpg";
 import { PopularCard } from "./PopularCard";
 import Boudha from "../../assets/popular/Boudhanath.jpg"
 import BaseCamp from "../../assets/popular/BaseCamp.jpg"
 import { ImBasecamp } from "react-icons/im";
 import { MdTempleBuddhist } from "react-icons/md";
 
-export const packageData = [
+const packageData = [
   {
     id: 1,
     image: BaseCamp,
     title: "Mountain Base Camp",
     Icon: ImBasecamp,
-    description: "This is place where you could feel cold and beauty",
+    description: "Explore mountain trails, sweeping Himalayan views and traditional villages.",
   },
   {
     id: 2,
     image: Boudha,
     title: "Heritage",
     Icon: MdTempleBuddhist,
-    description: "Our ancestor left us their pride to pass on to our generation, Than You!",
+    description: "Discover ancient temples, living traditions and Nepal’s cultural heritage.",
   }
 ];
 
@@ -39,7 +37,7 @@ export const Package = () => {
                 Affordable, customizable, and unforgettable adventures.
               </p>
             </div>
-            <Button className="w-52" variant="primary">
+            <Button to="/destination" className="w-52" variant="primary">
               Browse all packages
             </Button>
           </div>

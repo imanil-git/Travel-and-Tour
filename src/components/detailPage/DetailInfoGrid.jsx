@@ -1,7 +1,7 @@
 import { Calendar, Clock, Star, Users } from "lucide-react";
 import { InfoCard } from "./common/InfoCard";
 
-export const BookingInfoGrid = ({ bookingData }) => {
+export const DetailInfoGrid = ({ bookingData }) => {
   const information = [
     {
       label: "Duration",

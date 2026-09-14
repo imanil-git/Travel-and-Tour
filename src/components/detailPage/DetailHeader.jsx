@@ -1,7 +1,6 @@
 import { MapPin } from "lucide-react";
-import React from "react";
 
-export const BookingHeader = ({ bookingData }) => {
+export const DetailHeader = ({ bookingData }) => {
   return (
     <div className="mb-6">
       <span className="text-3xl sm:text-4xl font-bold text-[#3A2D26] mb-3">{bookingData.title}</span>

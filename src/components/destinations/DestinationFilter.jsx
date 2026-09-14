@@ -1,4 +1,3 @@
-import React from "react";
 import { FaTimes } from "react-icons/fa";
 
 export const DestinationFilter = ({
@@ -53,7 +52,7 @@ export const DestinationFilter = ({
             >
               <input
                 type="radio"
-                name="sortBy"
+                name={`${isMobile ? "mobile" : "desktop"}-sortBy`}
                 value={option}
                 checked={sortBy === option}
                 onChange={(e) => setSortBy(e.target.value)}
@@ -80,7 +79,7 @@ export const DestinationFilter = ({
             >
               <input
                 type="radio"
-                name="category"
+                name={`${isMobile ? "mobile" : "desktop"}-category`}
                 value={category}
                 checked={selectedCategory === category}
                 onChange={(e) => setSelectedCategory(e.target.value)}
@@ -107,7 +106,7 @@ export const DestinationFilter = ({
             >
               <input
                 type="radio"
-                name="region"
+                name={`${isMobile ? "mobile" : "desktop"}-region`}
                 value={region}
                 checked={selectedRegion === region}
                 onChange={(e) => setSelectedRegion(e.target.value)}
@@ -131,6 +130,7 @@ export const DestinationFilter = ({
         </div>
 
         <input
+          aria-label="Maximum price"
           type="range"
           min="3000"
           max="15000"
@@ -148,21 +148,21 @@ export const DestinationFilter = ({
         </label>
 
         <div className="space-y-1 text-sm text-slate-700">
-          {[4.9, 4.8, 4.7].map((rating) => (
+          {[0, 4.9, 4.8, 4.7].map((rating) => (
             <label
               key={rating}
               className="flex cursor-pointer items-center gap-2"
             >
               <input
                 type="radio"
-                name="rating"
+                name={`${isMobile ? "mobile" : "desktop"}-rating`}
                 value={rating}
                 checked={minRating === rating}
                 onChange={() => setMinRating(rating)}
                 className="accent-[#28364c]"
               />
 
-              ★ {rating} & above
+              {rating === 0 ? "All ratings" : `★ ${rating} & above`}
             </label>
           ))}
         </div>
