@@ -6,7 +6,6 @@ const bookingData = booking[0];
 export const useBookingStore = create((set, get) => ({
   step: 1,
 
-
   selectedDestination: bookingData,
   guests: 2,
   selectedAddOns: [],
@@ -27,8 +26,21 @@ export const useBookingStore = create((set, get) => ({
   nextStep: () => set((state) => ({ step: Math.min(state.step + 1, 3) })),
   prevStep: () => set((state) => ({ step: Math.max(state.step - 1, 1) })),
 
-  setDestination: (destination) => set((state) => ({ selectedDestination: destination, guests: Math.min(state.guests, destination.groupSize) })),
-  setGuests: (guests) => set((state) => ({ guests: Math.max(1, Math.min(state.selectedDestination.groupSize, Math.trunc(Number(guests)) || 1)) })),
+  setDestination: (destination) =>
+    set((state) => ({
+      selectedDestination: destination,
+      guests: Math.min(state.guests, destination.groupSize),
+    })),
+  setGuests: (guests) =>
+    set((state) => ({
+      guests: Math.max(
+        1,
+        Math.min(
+          state.selectedDestination.groupSize,
+          Math.trunc(Number(guests)) || 1,
+        ),
+      ),
+    })),
 
   toggleAddOn: (addonId) =>
     set((state) => {
@@ -44,6 +56,16 @@ export const useBookingStore = create((set, get) => ({
     set((state) => ({
       travelerInfo: { ...state.travelerInfo, [field]: value },
     })),
+
+  resetTravelerInfo: () =>
+    set({
+      travelerInfo: {
+        fullName: "",
+        email: "",
+        phone: "",
+        travelDate: "",
+      },
+    }),
 
   setPaymentMethod: (method) => set({ paymentMethod: method }),
 

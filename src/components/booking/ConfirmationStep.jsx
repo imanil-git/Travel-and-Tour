@@ -12,6 +12,7 @@ export function ConfirmationStep({ addOns = [] }) {
     selectedAddOns,
     updateTravelerInfo,
     getGrandTotal,
+    resetTravelerInfo,
     prevStep,
   } = useBookingStore();
 
@@ -45,15 +46,10 @@ export function ConfirmationStep({ addOns = [] }) {
       booking_reference: bookingReference,
     };
 
-    console.log("Traveler information:", travelerInfo);
-    console.log("Selected destination:", selectedDestination);
-    console.log("Selected add-on IDs:", selectedAddOns);
-    console.log("Sending booking details:", templateParams);
-
     try {
       const response = await sendBookingConformation(templateParams);
 
-      console.log("EmailJS success:", response);
+      resetTravelerInfo();
 
       setStatus("success");
       setMessage(
