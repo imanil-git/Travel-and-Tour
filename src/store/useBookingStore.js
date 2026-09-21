@@ -3,7 +3,7 @@ import { booking } from "../data/bookingData";
 
 const bookingData = booking[0];
 
-export const useBookingStore = create((set, get) => ({
+export const useBookingStore = create((set) => ({
   step: 1,
 
   selectedDestination: bookingData,
@@ -68,19 +68,4 @@ export const useBookingStore = create((set, get) => ({
     }),
 
   // setPaymentMethod: (method) => set({ paymentMethod: method }),
-
-  // Computed Totals
-  getAddOnsTotal: (addOnsList) => {
-    const { selectedAddOns } = get();
-    return selectedAddOns.reduce((sum, id) => {
-      const addon = addOnsList.find((a) => a.id === id);
-      return sum + (addon ? addon.price : 0);
-    }, 0);
-  },
-
-  getGrandTotal: (addOnsList) => {
-    const { selectedDestination, guests, getAddOnsTotal } = get();
-    const base = (selectedDestination?.price || 0) * guests;
-    return base + getAddOnsTotal(addOnsList);
-  },
 }));
