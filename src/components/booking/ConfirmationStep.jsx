@@ -7,15 +7,23 @@ import { useShallow } from "zustand/shallow";
 import { useBookingSummary } from "../../hooks/useBookingSummary.js";
 
 export function ConfirmationStep({ addOns = [] }) {
-  const { travelerInfo, updateTravelerInfo, resetTravelerInfo, prevStep } =
-    useBookingStore(
-      useShallow((state) => ({
-        travelerInfo: state.travelerInfo,
-        updateTravelerInfo: state.updateTravelerInfo,
-        resetTravelerInfo: state.resetTravelerInfo,
-        prevStep: state.prevStep,
-      })),
-    );
+  const {
+    travelerInfo,
+    updateTravelerInfo,
+    prevStep,
+    requestReceipt,
+    markRequestSent,
+    resetBooking,
+  } = useBookingStore(
+    useShallow((state) => ({
+      travelerInfo: state.travelerInfo,
+      updateTravelerInfo: state.updateTravelerInfo,
+      prevStep: state.prevStep,
+      markRequestSent: state.markRequestSent,
+      resetBooking: state.resetBooking,
+      requestReceipt: state.requestReceipt,
+    })),
+  );
   const { selectedDestination, guests, selectedAddOns, grandTotal } =
     useBookingSummary(addOns);
 
@@ -31,7 +39,7 @@ export function ConfirmationStep({ addOns = [] }) {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (!isFormValid || status === "sending" || status === "success") {
+    if (!isFormValid || status === "sending" || requestReceipt) {
       return;
     }
 
@@ -54,19 +62,15 @@ export function ConfirmationStep({ addOns = [] }) {
       location: selectedDestination.location,
       guests,
       add_ons: selectedAddOnNames || "No add-ons selected",
-      total_price: grandTotal().toLocaleString(),
+      total_price: grandTotal.toLocaleString(),
       booking_reference: bookingReference,
     };
 
     try {
       await sendBookingConfirmation(templateParams);
 
-      resetTravelerInfo();
-
-      setStatus("success");
-      setMessage(
-        `Booking request sent successfully. Reference: ${bookingReference}`,
-      );
+      markRequestSent(bookingReference);
+      setStatus("idle");
     } catch (error) {
       console.error("EmailJS failed:", error);
 
@@ -80,11 +84,39 @@ export function ConfirmationStep({ addOns = [] }) {
   };
 
   const isSending = status === "sending";
-  const isSuccess = status === "success";
+
+  if (requestReceipt) {
+    return (
+      <section className="rounded-2xl border border-green-200 bg-green-50 p-6 space-y-4">
+        <h2 className="text-lg font-bold text-green-900">
+          Booking request sent
+        </h2>
+
+        <p role="status" className="text-sm text-green-800">
+          Reference: {requestReceipt.reference}
+        </p>
+
+        <p className="text-sm text-green-800">
+          Our team will contact you after checking availability.
+        </p>
+
+        <button
+          type="button"
+          onClick={resetBooking}
+          className="rounded-full bg-slate-900 px-6 py-3 text-sm font-semibold text-white"
+        >
+          Plan another trip
+        </button>
+      </section>
+    );
+  }
 
   return (
     <form onSubmit={handleSubmit} className="space-y-6">
-      <div className="bg-white p-6 rounded-2xl border border-slate-200 space-y-4">
+      <fieldset
+        disabled={isSending}
+        className="bg-white p-6 rounded-2xl border border-slate-200 space-y-4"
+      >
         <h3 className="text-xs font-bold text-slate-900 uppercase tracking-wider">
           Lead Traveler Information
         </h3>
@@ -122,7 +154,7 @@ export function ConfirmationStep({ addOns = [] }) {
           onChange={(e) => updateTravelerInfo("travelDate", e.target.value)}
           required
         />
-      </div>
+      </fieldset>
 
       <p className="rounded-xl bg-amber-50 p-4 text-sm text-amber-900">
         Submitting this form sends a booking request. Our travel team will
@@ -130,8 +162,8 @@ export function ConfirmationStep({ addOns = [] }) {
       </p>
       {message && (
         <p
-          role="status"
-          className={`rounded-xl border p-4 text-sm ${status === "success" ? "border-green-200 bg-green-50 text-green-700" : status === "error" ? "border-red-200 bg-red-50 text-red-700" : "border-slate-200 bg-slate-50 text-slate-700"}`}
+          role="alert"
+          className="rounded-xl border border-red-200 bg-red-50 p-4 text-sm text-red-700"
         >
           {message}
         </p>
@@ -148,14 +180,10 @@ export function ConfirmationStep({ addOns = [] }) {
         </button>
         <button
           type="submit"
-          disabled={!isFormValid || isSending || isSuccess}
+          disabled={!isFormValid || isSending}
           className="bg-slate-900 text-white text-xs font-bold px-8 py-3 rounded-full hover:bg-slate-800 shadow-md"
         >
-          {isSending
-            ? "Sending..."
-            : isSuccess
-              ? "Booking Sent"
-              : "Confirm Booking"}
+          {isSending ? "Sending..." : "Send Booking Request"}
         </button>
       </div>
     </form>

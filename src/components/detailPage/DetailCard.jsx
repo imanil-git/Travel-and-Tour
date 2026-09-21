@@ -14,12 +14,23 @@ export const DetailCard = ({
   setTravelers,
 }) => {
   const navigate = useNavigate();
+  const startBooking = useBookingStore((state) => state.startBooking);
   const total = bookingData.price * travelers;
 
   const isTravelDateValid =
     travelDate !== "" &&
     travelDate >= earliestBookingDate() &&
     travelDate <= latestBookingDate();
+
+  function handleCustomizeTrip() {
+    if (!isTravelDateValid) return;
+    startBooking({
+      destination: bookingData,
+      guests: travelers,
+      travelDate,
+    });
+    navigate("/booking");
+  }
   return (
     <div className="bg-white rounded-2xl shadow-lg p-6 sticky top-24">
       {/* PRICE */}
@@ -78,15 +89,7 @@ export const DetailCard = ({
         <button
           type="button"
           disabled={!isTravelDateValid}
-          onClick={() => {
-            if (!isTravelDateValid) return;
-            const store = useBookingStore.getState();
-            store.setDestination(bookingData);
-            store.setGuests(travelers);
-            store.updateTravelerInfo("travelDate", travelDate);
-            store.setStep(2);
-            navigate("/booking");
-          }}
+          onClick={handleCustomizeTrip}
           className="w-full bg-[#28364c] text-white py-3 rounded-xl font-medium hover:bg-[#3A2D26] transition-all duration-300 hover:shadow-lg disabled:cursor-not-allowed"
         >
           Customize Trip

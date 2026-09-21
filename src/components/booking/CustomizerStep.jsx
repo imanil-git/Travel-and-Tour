@@ -3,7 +3,6 @@ import { useBookingStore } from "../../store/useBookingStore";
 import { useShallow } from "zustand/shallow";
 
 export function CustomizerStep({ addOns }) {
-  console.count("Customizer Step Rerender:")
   const {
     selectedDestination,
     guests,
