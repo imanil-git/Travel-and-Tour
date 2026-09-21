@@ -1,26 +1,21 @@
-import { useShallow } from "zustand/shallow";
-import { useBookingStore } from "../../store/useBookingStore";
+import { useBookingSummary } from "../../hooks/useBookingSummary";
 
 export function BookingSummarySidebar({ addOns }) {
-  console.count("BookingSUmmarySIdeBar Rerender:");
   const {
     selectedDestination,
     guests,
     selectedAddOns,
-    getAddOnsTotal,
-    getGrandTotal,
-  } = useBookingStore(
-    useShallow((state) => ({
-      selectedDestination: state.selectedDestination,
-      guests: state.guests,
-      selectedAddOns: state.selectedAddOns,
-      getAddOnsTotal: state.getAddOnsTotal,
-      getGrandTotal: state.getGrandTotal,
-    })),
+    baseTotal,
+    addOnsTotal,
+    grandTotal,
+  } = useBookingSummary(addOns);
+  console.log(
+    "slectedDestination:",
+    selectedDestination,
+    guests,
+    selectedAddOns,
   );
-
-  const addOnsTotal = getAddOnsTotal(addOns);
-  const grandTotal = getGrandTotal(addOns);
+  console.log("Total:", baseTotal, addOnsTotal, grandTotal);
 
   return (
     <div className="bg-white rounded-3xl p-6 border border-slate-200 sticky top-28 space-y-6">
@@ -54,7 +49,7 @@ export function BookingSummarySidebar({ addOns }) {
         <div className="flex justify-between">
           <span>Base Price ({guests}x Guests)</span>
           <span className="font-semibold text-slate-900">
-            Rs. {((selectedDestination?.price || 0) * guests).toLocaleString()}
+            Rs. {baseTotal.toLocaleString()}
           </span>
         </div>
 

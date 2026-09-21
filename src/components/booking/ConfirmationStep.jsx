@@ -4,30 +4,20 @@ import { Input } from "./ui/Input";
 import { sendBookingConfirmation } from "../../services/emailService.js";
 import { earliestBookingDate, latestBookingDate } from "../../utils/date.js";
 import { useShallow } from "zustand/shallow";
+import { useBookingSummary } from "../../hooks/useBookingSummary.js";
 
 export function ConfirmationStep({ addOns = [] }) {
-  console.count("ConfirmationStep Rerender:");
-  const {
-    travelerInfo,
-    selectedDestination,
-    guests,
-    selectedAddOns,
-    updateTravelerInfo,
-    getGrandTotal,
-    resetTravelerInfo,
-    prevStep,
-  } = useBookingStore(
-    useShallow((state) => ({
-      travelerInfo: state.travelerInfo,
-      selectedDestination: state.selectedDestination,
-      guests: state.guests,
-      selectedAddOns: state.selectedAddOns,
-      updateTravelerInfo: state.updateTravelerInfo,
-      getGrandTotal: state.getGrandTotal,
-      resetTravelerInfo: state.resetTravelerInfo,
-      prevStep: state.prevStep,
-    })),
-  );
+  const { travelerInfo, updateTravelerInfo, resetTravelerInfo, prevStep } =
+    useBookingStore(
+      useShallow((state) => ({
+        travelerInfo: state.travelerInfo,
+        updateTravelerInfo: state.updateTravelerInfo,
+        resetTravelerInfo: state.resetTravelerInfo,
+        prevStep: state.prevStep,
+      })),
+    );
+  const { selectedDestination, guests, selectedAddOns, grandTotal } =
+    useBookingSummary(addOns);
 
   const [status, setStatus] = useState("idle");
   const [message, setMessage] = useState("");
@@ -48,8 +38,7 @@ export function ConfirmationStep({ addOns = [] }) {
     setStatus("sending");
     setMessage("");
 
-    const selectedAddOnNames = addOns
-      .filter((addOn) => selectedAddOns.includes(addOn.id))
+    const selectedAddOnNames = selectedAddOns
       .map((addOn) => addOn.name)
       .join(", ");
 
@@ -65,7 +54,7 @@ export function ConfirmationStep({ addOns = [] }) {
       location: selectedDestination.location,
       guests,
       add_ons: selectedAddOnNames || "No add-ons selected",
-      total_price: getGrandTotal(addOns).toLocaleString(),
+      total_price: grandTotal().toLocaleString(),
       booking_reference: bookingReference,
     };
 
