@@ -7,7 +7,7 @@ export const useBookingStore = create((set, get) => ({
   step: 1,
 
   selectedDestination: bookingData,
-  guests: 2,
+  guests: 1,
   selectedAddOns: [],
 
   // Passenger / Contact Form State

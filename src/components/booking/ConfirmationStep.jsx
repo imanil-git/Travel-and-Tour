@@ -1,8 +1,8 @@
-import { todayLocal } from "../../utils/date";
 import { useState } from "react";
 import { useBookingStore } from "../../store/useBookingStore";
 import { Input } from "./ui/Input";
 import { sendBookingConformation } from "../../services/emailService.js";
+import { eraliestBookingDate, latestBookingDate } from "../../utils/date.js";
 
 export function ConfirmationStep({ addOns = [] }) {
   const {
@@ -19,8 +19,18 @@ export function ConfirmationStep({ addOns = [] }) {
   const [status, setStatus] = useState("idle");
   const [message, setMessage] = useState("");
 
+  const isFormValid =
+    travelerInfo.fullName.trim() !== "" &&
+    travelerInfo.email.trim() !== "" &&
+    travelerInfo.phone.trim() !== "" &&
+    travelerInfo.travelDate >= eraliestBookingDate() &&
+    travelerInfo.travelDate <= latestBookingDate();
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    if (!isFormValid || status === "sending" || status === "success") {
+      return;
+    }
 
     setStatus("sending");
     setMessage("");
@@ -104,7 +114,8 @@ export function ConfirmationStep({ addOns = [] }) {
         <Input
           label="Target Departure Date"
           type="date"
-          min={todayLocal()}
+          min={eraliestBookingDate()}
+          max={latestBookingDate()}
           value={travelerInfo.travelDate}
           onChange={(e) => updateTravelerInfo("travelDate", e.target.value)}
           required
@@ -135,7 +146,7 @@ export function ConfirmationStep({ addOns = [] }) {
         </button>
         <button
           type="submit"
-          disabled={isSending || isSuccess}
+          disabled={!isFormValid || isSending || isSuccess}
           className="bg-slate-900 text-white text-xs font-bold px-8 py-3 rounded-full hover:bg-slate-800 shadow-md"
         >
           {isSending

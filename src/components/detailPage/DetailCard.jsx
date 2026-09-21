@@ -1,10 +1,10 @@
-import { todayLocal } from "../../utils/date";
 import { useNavigate } from "react-router-dom";
 import { useBookingStore } from "../../store/useBookingStore";
 import { Calendar, ShieldCheck } from "lucide-react";
 import { DetailSummary } from "./DetailSummary";
 import { TravelerCounter } from "./TravelerCounter";
 import { ContactOptions } from "./ContactOptions";
+import { eraliestBookingDate, latestBookingDate } from "../../utils/date";
 
 export const DetailCard = ({
   bookingData,
@@ -15,6 +15,11 @@ export const DetailCard = ({
 }) => {
   const navigate = useNavigate();
   const total = bookingData.price * travelers;
+
+  const isTravelDateValid =
+    travelDate !== "" &&
+    travelDate >= eraliestBookingDate() &&
+    travelDate <= latestBookingDate();
   return (
     <div className="bg-white rounded-2xl shadow-lg p-6 sticky top-24">
       {/* PRICE */}
@@ -34,7 +39,10 @@ export const DetailCard = ({
 
       <div className="space-y-5">
         <div>
-          <label htmlFor="detail-travel-date" className="block text-sm font-medium text-[#433833] mb-2">
+          <label
+            htmlFor="detail-travel-date"
+            className="block text-sm font-medium text-[#433833] mb-2"
+          >
             <Calendar className="inline w-4 h-4 mr-1.5" /> Travel Date
           </label>
 
@@ -42,7 +50,8 @@ export const DetailCard = ({
             id="detail-travel-date"
             type="date"
             value={travelDate}
-            min={todayLocal()}
+            min={eraliestBookingDate()}
+            max={latestBookingDate()}
             onChange={(event) => setTravelDate(event.target.value)}
             className="w-full px-4 py-2.5 border border-[#D7CDC2] rounded-xl focus:outline-none focus:border-[#28364c] transition-colors"
           />
@@ -59,15 +68,18 @@ export const DetailCard = ({
         <div className="border-t border-[#D7CDC2] pt-4">
           <div className="flex justify-between items-center">
             <span className="text-[#433833]">Total</span>
-            <span className="text-2xl font-bold text-[#3A2D26]">Rs. {total.toLocaleString()}</span>
+            <span className="text-2xl font-bold text-[#3A2D26]">
+              Rs. {total.toLocaleString()}
+            </span>
           </div>
         </div>
 
         {/* BOOK BUTTON */}
         <button
           type="button"
-          disabled={!travelDate}
+          disabled={!isTravelDateValid}
           onClick={() => {
+            if (!isTravelDateValid) return;
             const store = useBookingStore.getState();
             store.setDestination(bookingData);
             store.setGuests(travelers);
