@@ -4,7 +4,7 @@ import { Calendar, ShieldCheck } from "lucide-react";
 import { DetailSummary } from "./DetailSummary";
 import { TravelerCounter } from "./TravelerCounter";
 import { ContactOptions } from "./ContactOptions";
-import { eraliestBookingDate, latestBookingDate } from "../../utils/date";
+import { earliestBookingDate, latestBookingDate } from "../../utils/date";
 
 export const DetailCard = ({
   bookingData,
@@ -18,7 +18,7 @@ export const DetailCard = ({
 
   const isTravelDateValid =
     travelDate !== "" &&
-    travelDate >= eraliestBookingDate() &&
+    travelDate >= earliestBookingDate() &&
     travelDate <= latestBookingDate();
   return (
     <div className="bg-white rounded-2xl shadow-lg p-6 sticky top-24">
@@ -50,7 +50,7 @@ export const DetailCard = ({
             id="detail-travel-date"
             type="date"
             value={travelDate}
-            min={eraliestBookingDate()}
+            min={earliestBookingDate()}
             max={latestBookingDate()}
             onChange={(event) => setTravelDate(event.target.value)}
             className="w-full px-4 py-2.5 border border-[#D7CDC2] rounded-xl focus:outline-none focus:border-[#28364c] transition-colors"

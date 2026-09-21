@@ -1,10 +1,12 @@
 import { useState } from "react";
 import { useBookingStore } from "../../store/useBookingStore";
 import { Input } from "./ui/Input";
-import { sendBookingConformation } from "../../services/emailService.js";
-import { eraliestBookingDate, latestBookingDate } from "../../utils/date.js";
+import { sendBookingConfirmation } from "../../services/emailService.js";
+import { earliestBookingDate, latestBookingDate } from "../../utils/date.js";
+import { useShallow } from "zustand/shallow";
 
 export function ConfirmationStep({ addOns = [] }) {
+  console.count("ConfirmationStep Rerender:");
   const {
     travelerInfo,
     selectedDestination,
@@ -14,7 +16,18 @@ export function ConfirmationStep({ addOns = [] }) {
     getGrandTotal,
     resetTravelerInfo,
     prevStep,
-  } = useBookingStore();
+  } = useBookingStore(
+    useShallow((state) => ({
+      travelerInfo: state.travelerInfo,
+      selectedDestination: state.selectedDestination,
+      guests: state.guests,
+      selectedAddOns: state.selectedAddOns,
+      updateTravelerInfo: state.updateTravelerInfo,
+      getGrandTotal: state.getGrandTotal,
+      resetTravelerInfo: state.resetTravelerInfo,
+      prevStep: state.prevStep,
+    })),
+  );
 
   const [status, setStatus] = useState("idle");
   const [message, setMessage] = useState("");
@@ -23,7 +36,7 @@ export function ConfirmationStep({ addOns = [] }) {
     travelerInfo.fullName.trim() !== "" &&
     travelerInfo.email.trim() !== "" &&
     travelerInfo.phone.trim() !== "" &&
-    travelerInfo.travelDate >= eraliestBookingDate() &&
+    travelerInfo.travelDate >= earliestBookingDate() &&
     travelerInfo.travelDate <= latestBookingDate();
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -57,7 +70,7 @@ export function ConfirmationStep({ addOns = [] }) {
     };
 
     try {
-      const response = await sendBookingConformation(templateParams);
+      await sendBookingConfirmation(templateParams);
 
       resetTravelerInfo();
 
@@ -114,7 +127,7 @@ export function ConfirmationStep({ addOns = [] }) {
         <Input
           label="Target Departure Date"
           type="date"
-          min={eraliestBookingDate()}
+          min={earliestBookingDate()}
           max={latestBookingDate()}
           value={travelerInfo.travelDate}
           onChange={(e) => updateTravelerInfo("travelDate", e.target.value)}
@@ -123,7 +136,7 @@ export function ConfirmationStep({ addOns = [] }) {
       </div>
 
       <p className="rounded-xl bg-amber-50 p-4 text-sm text-amber-900">
-        Submitting this form send a booking request. Our travel team will
+        Submitting this form sends a booking request. Our travel team will
         contact you after checking availability.
       </p>
       {message && (

@@ -50,7 +50,6 @@ export const PopularPage = () => {
           <div className="h-8 w-px bg-white/20"></div>
 
           <div className="text-center px-3">
-            Heart,
             <span className="block text-xl font-bold text-white">4.9 ★</span>
             <span className="text-[10px] text-slate-300 uppercase tracking-wider">
               Avg Rating

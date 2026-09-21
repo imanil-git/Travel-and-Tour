@@ -8,7 +8,7 @@ const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
 const contactTemplatedId = import.meta.env.VITE_EMAILJS_CONTACT_TEMPLATE_ID;
 
 // Booking email
-export const sendBookingConformation = (templateParams) => {
+export const sendBookingConfirmation = (templateParams) => {
   if (!serviceId) throw new Error("EmailJS service id is missing.");
 
   if (!templateId) throw new Error("EmailJS template id is missing.");

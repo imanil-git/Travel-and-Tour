@@ -25,7 +25,7 @@ const packageData = [
 export const Package = () => {
   return (
     <section className="py-24">
-      <div className="max-w-full px-4 sm:px-10 md:16">
+      <div className="max-w-full px-4 sm:px-10 md:px-16">
         <div className="grid gap-6 md:grid-cols-4">
           {/* Introduction Card */}
           <div className="md:col-span-2 flex h-[60vh] flex-col justify-between rounded-2xl bg-slate-400 p-7 text-white">

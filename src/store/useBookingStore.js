@@ -19,7 +19,7 @@ export const useBookingStore = create((set, get) => ({
   },
 
   // Payment Method
-  paymentMethod: "esewa", // 'esewa' | 'card'
+  // paymentMethod: "esewa", // 'esewa' | 'card'
 
   // Actions
   setStep: (step) => set({ step }),
@@ -67,7 +67,7 @@ export const useBookingStore = create((set, get) => ({
       },
     }),
 
-  setPaymentMethod: (method) => set({ paymentMethod: method }),
+  // setPaymentMethod: (method) => set({ paymentMethod: method }),
 
   // Computed Totals
   getAddOnsTotal: (addOnsList) => {

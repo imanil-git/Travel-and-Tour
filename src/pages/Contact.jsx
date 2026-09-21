@@ -10,7 +10,7 @@ export const Contact = () => {
           <iframe
             title="Nepal Map"
             src="https://www.google.com/maps?q=Nepal&z=6&output=embed"
-            className="h-full w-h-full border-0"
+            className="h-full w-full border-0"
             loading="lazy"
           />
         </div>
@@ -54,7 +54,7 @@ export const Contact = () => {
           <iframe
             title="TOUR AND TRAVEL Location Map"
             src="https://www.google.com/maps?q=Nepal&z=7&output=embed"
-            className="h-full w-full border-0 rounded-2xl"
+            className="w-full h-full border-0 rounded-2xl"
             loading="lazy"
           />
         </div>

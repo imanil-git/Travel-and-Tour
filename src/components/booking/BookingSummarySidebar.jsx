@@ -1,13 +1,23 @@
+import { useShallow } from "zustand/shallow";
 import { useBookingStore } from "../../store/useBookingStore";
 
 export function BookingSummarySidebar({ addOns }) {
+  console.count("BookingSUmmarySIdeBar Rerender:");
   const {
     selectedDestination,
     guests,
     selectedAddOns,
     getAddOnsTotal,
     getGrandTotal,
-  } = useBookingStore();
+  } = useBookingStore(
+    useShallow((state) => ({
+      selectedDestination: state.selectedDestination,
+      guests: state.guests,
+      selectedAddOns: state.selectedAddOns,
+      getAddOnsTotal: state.getAddOnsTotal,
+      getGrandTotal: state.getGrandTotal,
+    })),
+  );
 
   const addOnsTotal = getAddOnsTotal(addOns);
   const grandTotal = getGrandTotal(addOns);
@@ -22,8 +32,8 @@ export function BookingSummarySidebar({ addOns }) {
       {selectedDestination && (
         <div className="flex items-center space-x-3 pb-4 border-b border-slate-100">
           <img
-                loading="lazy"
-                decoding="async"
+            loading="lazy"
+            decoding="async"
             src={selectedDestination.image}
             alt="Package"
             className="w-14 h-14 rounded-xl object-cover"
@@ -44,8 +54,7 @@ export function BookingSummarySidebar({ addOns }) {
         <div className="flex justify-between">
           <span>Base Price ({guests}x Guests)</span>
           <span className="font-semibold text-slate-900">
-            Rs.{" "}
-            {((selectedDestination?.price || 0) * guests).toLocaleString()}
+            Rs. {((selectedDestination?.price || 0) * guests).toLocaleString()}
           </span>
         </div>
 

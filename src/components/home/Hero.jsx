@@ -23,7 +23,7 @@ export const Hero = () => {
             <Button to="/booking" variant="secondary" className="text-sm sm:text-base px-4">
               Plan Your Trip
             </Button>
-            <Button to="/destination" variant="teritary" className="text-sm px-4 sm:text-base">
+            <Button to="/destination" variant="tertiary" className="text-sm px-4 sm:text-base">
               Explore Destinations
             </Button>
           </div>

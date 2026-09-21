@@ -6,7 +6,7 @@ import { Button } from "../common/Button";
 import { DestinationSearch } from "../common/DestinationSearch";
 import { navigation } from "../../data/navigation";
 export const Header = () => {
-  const { toogleMenu, isMenuOpen } = useMenuStore();
+  const { toggleMenu, isMenuOpen } = useMenuStore();
   return (
     <header className="bg-white py-5">
       <nav
@@ -41,7 +41,7 @@ export const Header = () => {
           aria-label={isMenuOpen ? "Close navigation" : "Open navigation"}
           aria-expanded={isMenuOpen}
           aria-controls="mobile-navigation"
-          onClick={toogleMenu}
+          onClick={toggleMenu}
           className="rounded-full bg-slate-900 p-3 text-white xl:hidden"
         >
           {isMenuOpen ? <X size={20} /> : <Menu size={20} />}

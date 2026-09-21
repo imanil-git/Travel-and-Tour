@@ -9,7 +9,7 @@ export const useMenuStore = create((set) => ({
 
     closeMenu: () => set({ isMenuOpen: false}),
 
-    toogleMenu: () => set((state) => ({
+    toggleMenu: () => set((state) => ({
         isMenuOpen : !state.isMenuOpen
     })),
 }))

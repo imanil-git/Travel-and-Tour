@@ -10,7 +10,6 @@ const initialForm = {
 
 export const ContactForm = () => {
   const [form, setForm] = useState(initialForm);
-  const [submitted, setSubmitted] = useState(false);
 
   const [status, setStatus] = useState("idle");
   const [error, setError] = useState("");
@@ -36,7 +35,6 @@ export const ContactForm = () => {
 
     setStatus("idle");
     setError("");
-    setSubmitted(false);
   };
 
   const handleSubmit = async (event) => {
@@ -110,7 +108,7 @@ export const ContactForm = () => {
           variant="primary"
           disabled={isSending}
         >
-          {isSending ? "Reviewing..." : "Review Message"}
+          {isSending ? "Sending..." : "Send Message"}
         </Button>
 
         {status === "success" && (

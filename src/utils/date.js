@@ -9,7 +9,7 @@ export function todayLocal() {
   return formatLocalDate(new Date());
 }
 
-export function eraliestBookingDate() {
+export function earliestBookingDate() {
   const date = new Date();
   date.setDate(date.getDate() + 1);
 

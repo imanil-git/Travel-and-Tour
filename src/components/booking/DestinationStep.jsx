@@ -1,8 +1,16 @@
 import { MapPin } from "lucide-react";
 import { useBookingStore } from "../../store/useBookingStore";
+import { useShallow } from "zustand/shallow";
 
 export function DestinationStep({ destinations }) {
-  const { selectedDestination, setDestination, nextStep } = useBookingStore();
+  console.count("DestinationStep Rerendered:")
+  const { selectedDestination, setDestination, nextStep } = useBookingStore(
+    useShallow((state) => ({
+      selectedDestination: state.selectedDestination,
+      setDestination: state.setDestination,
+      nextStep: state.nextStep,
+    })),
+  );
 
   return (
     <div className="space-y-4">
