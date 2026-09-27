@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 export const Breadcrumb = ({ bookingTitle }) => {
   return (
     <div className="flex items-center justify-center gap-2 text-sm md:text-base flex-wrap">
-      <Link to="/" className="text-lg hover:text-[#28364c] transition-colors">
+      <Link to="/" className="text-lg hover:text-brand transition-colors">
         Home
       </Link>
       <span className="w-4 h-4 text-gray-400">/</span>

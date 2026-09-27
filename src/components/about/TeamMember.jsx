@@ -1,5 +1,6 @@
-import Team1 from "../../assets/Team Member/PotraitPhoto.jpg";
-import Team2 from "../../assets/Team Member/Potrait.jpg";
+import { TeamMemberCard } from "./TeamMemberCard";
+import Team1 from "../../assets/Team Member/PotraitPhoto.webp";
+import Team2 from "../../assets/Team Member/Potrait.webp";
 
 const imageGrid = [
   {
@@ -67,41 +68,13 @@ export const TeamMember = () => {
         </h2>
         <div className="space-y-4 sm:space-y-6 lg:space-y-8">
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 lg:gap-8">
-            {imageGrid.slice(0, 4).map((img) => (
-              <div
-                key={img.id}
-                className="relative w-full h-72 rounded-3xl overflow-hidden"
-              >
-                <img src={img.img} alt={img.name} className="w-full h-full object-cover object-center" />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent text-white">
-                  <div className="absolute left-4 bottom-2">
-                    <h4 className="">{img.name}</h4>
-                    <p className="">{img.post}</p>
-                  </div>
-                </div>
-              </div>
+            {imageGrid.slice(0, 4).map((member) => (
+              <TeamMemberCard key={member.id} member={member} />
             ))}
           </div>
           <div className="grid grid-cols-2 lg:grid-cols-5 gap-4 sm:gap-6 lg:gap-8">
-            {imageGrid.slice(4, 9).map((img) => (
-              <div
-                key={img.id}
-                className="relative w-full h-72 md:h-96 rounded-3xl overflow-hidden"
-              >
-                <img
-                loading="lazy"
-                decoding="async"
-                  src={img.img}
-                  alt=""
-                  className="w-full h-full object-cover object-center"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent text-white">
-                  <div className="absolute left-4 bottom-2">
-                    <h4 className="">{img.name}</h4>
-                    <p className="">{img.post}</p>
-                  </div>
-                </div>
-              </div>
+            {imageGrid.slice(4, 9).map((member) => (
+              <TeamMemberCard key={member.id} member={member} className="md:h-96" />
             ))}
           </div>
         </div>

@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Navigate, useParams } from "react-router-dom";
-import { booking } from "../data/bookingData.js";
+import { destinations } from "../data/destinations.js";
 import { DetailHero } from "../components/detailPage/DetailHero.jsx";
 import { DetailHeader } from "../components/detailPage/DetailHeader.jsx";
 import { DetailInfoGrid } from "../components/detailPage/DetailInfoGrid.jsx";
@@ -12,7 +12,7 @@ import { DetailCard } from "../components/detailPage/DetailCard.jsx";
 
 export const DetailPage = () => {
   const { slug } = useParams();
-  const bookingData = booking.find((item) => item.slug === slug);
+  const bookingData = destinations.find((item) => item.slug === slug);
 
 
   const [activeTab, setActiveTab] = useState("overview");
@@ -24,7 +24,7 @@ export const DetailPage = () => {
     return <Navigate to="/destination" replace />;
   }
   return (
-    <div className="min-h-screen bg-[#FAF8F5]">
+    <div className="min-h-screen bg-sand">
       {/* HERO */}
       <DetailHero bookingData={bookingData} />
 

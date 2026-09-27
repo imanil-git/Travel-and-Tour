@@ -4,7 +4,7 @@ import { CustomizerStep } from "../components/booking/CustomizerStep";
 import { ConfirmationStep } from "../components/booking/ConfirmationStep";
 import { BookingSummarySidebar } from "../components/booking/BookingSummarySidebar";
 import { useBookingStore } from "../store/useBookingStore";
-import { booking } from "../data/bookingData";
+import { destinations } from "../data/destinations";
 
 import { addOns } from "../data/addOns";
 
@@ -14,11 +14,12 @@ export default function BookingPage() {
   return (
     <div className="min-h-screen py-6">
       <div className="px-4 sm:px-10 lg:px-16">
+        <h1 className="mb-6 text-3xl font-bold text-brand">Plan your trip</h1>
         <BookingStepper />
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
           <div className="lg:col-span-8">
-            {step === 1 && <DestinationStep destinations={booking} />}
+            {step === 1 && <DestinationStep destinations={destinations} />}
             {step === 2 && <CustomizerStep addOns={addOns} />}
             {step === 3 && <ConfirmationStep addOns={addOns} />}
           </div>

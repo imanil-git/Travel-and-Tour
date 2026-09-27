@@ -1,60 +1,63 @@
 # Travel Nepal
 
-A React 19 / Vite single-page travel catalogue and trip planner, using Tailwind CSS, React Router and Zustand.
+A React / Vite travel catalogue and trip planner using Tailwind CSS, React Router and Zustand.
 
 ## Run locally
 
-Use Node.js 22.12 or newer (Node 22 LTS recommended) and npm.
+Use Node.js 22.12 or newer.
 
 ```sh
 npm ci
 npm run dev
 npm run lint
+npm test
 npm run build
 npm run preview
 ```
 
-## Structure
+## Project structure
 
-```text
-src/
-  assets/                 Local destination and editorial images
-  components/
-    common/               Shared Button, InputField, search, navigation helpers
-    layouts/              Header, Footer, DefaultLayout
-    ui/                   Reusable DestinationCard
-    home/ about/ contact/  Page-specific sections
-    destinations/         Destination filters
-    detailPage/           Itinerary, details and trip customization entry
-    booking/              Planner steps and summary
-    popular/              Popular tour cards
-  data/                   Package catalogue, add-ons, navigation
-  pages/                  Route-level composition, including 404
-  routes/                 Route definitions
-  store/                  Booking and menu state
-  utils/                  Shared local-date helper
-public/                   Static files and SPA fallback
+- `src/data/destinations.js`: the shared tour catalogue; `addOns.js` contains booking extras.
+- `src/hooks/useContactForm.js`: contact values, validation, pending lock and submission feedback.
+- `src/hooks/useBookingSummary.js`: selected booking inputs and derived pricing.
+- `src/utils/filterDestinations.js`: shared search, category, region, activity, price, rating and sorting rules.
+- `src/utils/bookingPricing.js`: numeric booking totals; add-ons are charged once per booking.
+- `src/store/useBookingStore.js`: the current booking draft and request receipt.
+- `src/components/common/`: shared inputs, buttons, traveler counter and headings.
+- `src/components/destinations/FilterDrawer.jsx`: native modal dialog with Escape, contained focus and focus restoration.
+- `src/components/about/TeamMemberCard.jsx`: shared team-card markup.
+- `src/components/home/PackageCard.jsx`: home-page package card, separate from the Popular page's card.
+- `tests/`: filtering and pricing regression checks with Node's built-in test runner.
+
+Page-specific components remain grouped by feature. The two BenefitCard designs have different contracts and remain separate. The catalogue is local data; no Redux or TanStack Query migration is included.
+
+## Behavior
+
+Popular categories come from the catalogue. Its sort dropdown changes the displayed order; popularity means review count, not actual bookings. Favorites survive filtering while the page remains mounted. Destination search uses the `q` URL parameter; other filters are local to the page. The mobile filter dialog shares the same filter values as the desktop sidebar.
+
+Selecting a package in the booking wizard resets guests to one and clears add-ons. Starting from a detail page creates a fresh draft with the chosen date and guest count. Successful email submission records a request reference, not a confirmed reservation. The draft and receipt are memory-only and clear on refresh.
+
+The contact form disables input during submission, prevents a second in-flight submission, preserves values on failure, and clears them on success. Both booking and contact forms send email when configured. For automated testing, intercept EmailJS requests rather than sending real messages.
+
+## Email configuration
+
+Set these values in a local `.env.local` file (do not commit it):
+
+```dotenv
+VITE_EMAILJS_SERVICE_ID=your_service_id
+VITE_EMAILJS_PUBLIC_KEY=your_public_key
+VITE_EMAILJS_TEMPLATE_ID=your_booking_template_id
+VITE_EMAILJS_CONTACT_TEMPLATE_ID=your_contact_template_id
 ```
 
-Keep page composition in pages, business state in store, catalogue content in data, and reusable controls in common. Booking input re-exports the common InputField for compatibility. The two BenefitCard and PopularCard designs have different content/layout contracts and remain feature-specific; avoid forcing unrelated cards into a large conditional component.
+Vite variables are exposed to the browser. These are browser integration identifiers; never put private API keys or server credentials in them. Delivery depends on the configured EmailJS service and templates. There is no booking database, verified availability or payment integration.
 
-## Current scope
+## Accessibility and assets
 
-This is a hostable frontend preview. Package selection, guest limits, add-ons, price estimates, search, filters and navigation work locally. Booking and contact forms explicitly say they do not transmit data. No reservations, payments, email delivery or persistent customer records are implemented. Refreshing clears planner state. Package prices, reviews, team information and imagery are sample content to verify before business use.
+Routes have primary headings. The carousel offers pause/resume and stops autoplay for reduced-motion preferences. Displayed photos use resized WebP copies; original JPEGs remain as source assets. Optional legacy font files in `public` are not used by the interface.
 
-## Hosting later
+## Hosting
 
-Build command: `npm run build`. Publish directory: `dist`. Install with `npm ci` using the committed lockfile. Do not use the development server as a production server.
+Build with `npm run build` and publish `dist`. Vercel rewrites and the Netlify `_redirects` file support direct route visits. This configuration assumes hosting at the domain root.
 
-- Vercel: import the repository as a Vite project; the included vercel.json provides SPA rewrites.
-- Netlify: publish dist; public/_redirects is copied into the build so direct route visits resolve to index.html.
-- Other static hosts: serve existing assets normally, then fall back to index.html for client-side routes.
-- This configuration assumes hosting at the domain root. Subdirectory hosting requires coordinated Vite base and router basename changes.
-
-Verify direct visits and refreshes on /destination, /booking and /booking/pokhara after deployment. Add the final domain to canonical/social metadata only once it is known.
-
-References: [Vite static deployment](https://vite.dev/guide/static-deploy), [Vite on Vercel](https://vercel.com/docs/frameworks/frontend/vite).
-
-## Before accepting real customers
-
-Connect a server-side booking/contact service with validation and confirmed delivery, verify package availability and prices server-side, integrate a payment provider with server-side verification if payment is required, and replace placeholder business details. Review image/font rights and replace sample ratings and team content. No secrets should be placed in frontend code or VITE_ variables. Existing optional font files remain in public but are no longer loaded; the UI uses system fonts.
+Before business use, replace sample catalogue/team content and verify prices and availability through a backend. Navigating away during an in-flight booking request is not yet coordinated with a new draft; a future request-lifecycle change should guard against late responses updating another draft.

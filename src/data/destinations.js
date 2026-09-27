@@ -1,12 +1,12 @@
-import Pokhara from "../assets/destinations/Pokhara.jpg";
-import Kathmandu from "../assets/destinations/Kathmandu.jpg";
-import Mustang from "../assets/destinations/Mustang.jpg";
-import Everest from "../assets/destinations/Everest.jpg";
-import Chitwan from "../assets/destinations/Chitwan.jpg";
-import Annapurna from "../assets/destinations/Annapurna.jpg";
-import Lumbini from "../assets/destinations/Lumbini.jpg";
+import Pokhara from "../assets/destinations/Pokhara.webp";
+import Kathmandu from "../assets/destinations/Kathmandu.webp";
+import Mustang from "../assets/destinations/Mustang.webp";
+import Everest from "../assets/destinations/Everest.webp";
+import Chitwan from "../assets/destinations/Chitwan.webp";
+import Annapurna from "../assets/destinations/Annapurna.webp";
+import Lumbini from "../assets/destinations/Lumbini.webp";
 
-export const booking = [
+export const destinations = [
   {
     id: 1,
     name: "Pokhara",

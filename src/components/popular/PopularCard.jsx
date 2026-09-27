@@ -29,7 +29,7 @@ export const PopularCard = ({ bookingData, toggleFavorite, isFav }) => {
 
           {/* Top Badges */}
           <div className="absolute top-4 left-4 right-4 flex items-center justify-between z-10">
-            <span className="bg-[#28364c] backdrop-blur-md text-white text-[10px] font-bold uppercase tracking-wider px-3 py-1 rounded-full border border-white/10">
+            <span className="bg-brand backdrop-blur-md text-white text-[10px] font-bold uppercase tracking-wider px-3 py-1 rounded-full border border-white/10">
               {bookingData.category}
             </span>
 
@@ -111,7 +111,7 @@ export const PopularCard = ({ bookingData, toggleFavorite, isFav }) => {
           </span>
         </div>
 
-        <Link to={`/booking/${bookingData.slug}`} className="bg-[#28364c] text-white text-xs font-semibold px-4 py-2 rounded-full hover:bg-slate-800 transition-all flex items-center space-x-1">
+        <Link to={`/booking/${bookingData.slug}`} className="bg-brand text-white text-xs font-semibold px-4 py-2 rounded-full hover:bg-slate-800 transition-all flex items-center space-x-1">
           <span>View Tour</span>
 
           <ChevronRight className="w-3.5 h-3.5" />

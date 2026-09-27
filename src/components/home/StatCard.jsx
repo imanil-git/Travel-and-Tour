@@ -3,7 +3,7 @@ export const StatCard = ({ stat }) => {
   const Icon = stat.icon;
   return (
     <article className="text-center">
-      <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-[#28364c] text-white">
+      <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-brand text-white">
         <Icon size={22} />
       </div>
 

@@ -1,3 +1,5 @@
+import { useEffect, useRef, useState } from "react";
+import { useMediaQuery } from "../../hooks/useMediaQuery";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Navigation } from "swiper/modules";
 import "swiper/css";
@@ -6,12 +8,12 @@ import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 
 import { SectionTitle } from "../common/SectionTitle";
 import { Button } from "../common/Button.jsx";
-import Pokhara from "../../assets/destinations/Pokhara.jpg";
-import Kathmandu from "../../assets/destinations/Kathmandu.jpg";
-import Mustang from "../../assets/destinations/Mustang.jpg";
-import Everest from "../../assets/destinations/Everest.jpg";
-import Chitwan from "../../assets/destinations/Chitwan.jpg";
-import Annapurna from "../../assets/destinations/Annapurna.jpg";
+import Pokhara from "../../assets/destinations/Pokhara.webp";
+import Kathmandu from "../../assets/destinations/Kathmandu.webp";
+import Mustang from "../../assets/destinations/Mustang.webp";
+import Everest from "../../assets/destinations/Everest.webp";
+import Chitwan from "../../assets/destinations/Chitwan.webp";
+import Annapurna from "../../assets/destinations/Annapurna.webp";
 const galleryImages = [
   { id: 1, title: "Peaceful Pokhara", category: "Nature", image: Pokhara },
   { id: 2, title: "Mount Everest", category: "Mountain", image: Everest },
@@ -22,6 +24,16 @@ const galleryImages = [
 ];
 
 export const TopDestinations = () => {
+  const reducedMotion = useMediaQuery("(prefers-reduced-motion: reduce)");
+  const [paused, setPaused] = useState(false);
+  const swiperRef = useRef(null);
+  const shouldAutoplay = !reducedMotion && !paused;
+  useEffect(() => {
+    const swiper = swiperRef.current;
+    if (!swiper || swiper.destroyed) return;
+    if (shouldAutoplay) swiper.autoplay.start();
+    else swiper.autoplay.stop();
+  }, [shouldAutoplay]);
   return (
     <section className="px-4 sm:px-10 lg:px-16 lg:py-10 py-10 bg-gray-300 rounded-4xl">
       <div className="relative mx-auto w-full px-6">
@@ -37,6 +49,7 @@ export const TopDestinations = () => {
         />
 
         <Swiper
+          onSwiper={(swiper) => { swiperRef.current = swiper; if (!shouldAutoplay) swiper.autoplay.stop(); }}
           modules={[Autoplay, Navigation]}
           grabCursor={true}
           slidesPerView={1}
@@ -48,18 +61,12 @@ export const TopDestinations = () => {
           slidesPerGroup={1}
           spaceBetween={26}
           loop={true}
-          speed={3000}
+          speed={reducedMotion ? 0 : 600}
           autoplay={{
+            enabled: shouldAutoplay,
             delay: 3000,
             pauseOnMouseEnter: true,
             disableOnInteraction: false,
-          }}
-          coverflowEffect={{
-            rotate: 0,
-            stretch: 0,
-            depth: 180,
-            modifier: 2,
-            slideShadows: false,
           }}
           breakpoints={{
             640: {
@@ -112,16 +119,20 @@ export const TopDestinations = () => {
           ))}
         </Swiper>
 
-        <div className="mt-6">
+        <div className="mt-6 flex flex-wrap items-center gap-3">
+          <button type="button" disabled={reducedMotion} aria-pressed={paused || reducedMotion}
+            onClick={() => setPaused((value) => !value)} className="rounded-full border border-brand px-4 py-2 text-sm text-brand">
+            {reducedMotion ? "Autoplay off: reduced motion" : paused ? "Play slideshow" : "Pause slideshow"}
+          </button>
           <button
-            className="gallery-prev absolute right-20 flex h-12 w-12 items-center justify-center rounded-full border text-[#28364c] border-[#28364c] backdrop-blur-md transition duration-300 hover:scale-110"
+            className="gallery-prev flex h-12 w-12 items-center justify-center rounded-full border text-brand border-brand backdrop-blur-md transition duration-300 hover:scale-110"
             aria-label="Previous image"
           >
             <FaArrowLeft />
           </button>
 
           <button
-            className="gallery-next absolute right-4 flex h-12 w-12 items-center justify-center rounded-full border text-[#28364c] border-[#28364c] backdrop-blur-md transition duration-300 hover:scale-110"
+            className="gallery-next flex h-12 w-12 items-center justify-center rounded-full border text-brand border-brand backdrop-blur-md transition duration-300 hover:scale-110"
             aria-label="Next image"
           >
             <FaArrowRight />

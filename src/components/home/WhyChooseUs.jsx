@@ -1,4 +1,4 @@
-import { booking } from "../../data/bookingData";
+import { destinations } from "../../data/destinations";
 import { SectionTitle } from "../common/SectionTitle";
 import { FaMap } from "react-icons/fa";
 import { RiEmotionLaughLine } from "react-icons/ri";
@@ -46,7 +46,7 @@ const whyChooseUsStats = [
   },
   {
     id: 3,
-    value: booking.length,
+    value: destinations.length,
     label: "Featured destinations",
     icon: LuMapPinned,
   },

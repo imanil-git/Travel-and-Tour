@@ -3,7 +3,7 @@ import { useBookingStore } from "../../store/useBookingStore";
 import { useShallow } from "zustand/shallow";
 
 export function DestinationStep({ destinations }) {
-  console.count("DestinationStep Rerendered:")
+
   const { selectedDestination, setDestination, nextStep } = useBookingStore(
     useShallow((state) => ({
       selectedDestination: state.selectedDestination,

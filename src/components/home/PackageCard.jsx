@@ -1,5 +1,5 @@
 
-export const PopularCard = ({ package: packageData }) => {
+export const PackageCard = ({ package: packageData }) => {
   const Icon = packageData.Icon;
   return (
     <div

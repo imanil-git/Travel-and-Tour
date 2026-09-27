@@ -1,4 +1,4 @@
-import HeroImage from "../../assets/HeroPic.jpg";
+import HeroImage from "../../assets/HeroPic.webp";
 
 export const AboutHero = () => {
   return (
@@ -10,9 +10,9 @@ export const AboutHero = () => {
     >
       <div className="flex min-h-[70vh] items-center justify-center">
         <div className="flex flex-col items-start text-center gap-2">
-          <span className="text-white uppercase text-5xl font-extrabold sm:text-7xl lg:text-8xl">
+          <h1 className="text-white uppercase text-5xl font-extrabold sm:text-7xl lg:text-8xl">
             Discover Nepal
-          </span>
+          </h1>
         </div>
       </div>
     </section>

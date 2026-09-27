@@ -1,10 +1,12 @@
 import { useSearchParams } from "react-router-dom";
-import { useMemo, useState } from "react";
+import { useState } from "react";
 import { SectionTitle } from "../components/common/SectionTitle";
 import { DestinationCard } from "../components/ui/DestinationCard";
 import { FaSlidersH } from "react-icons/fa";
 import { DestinationFilter } from "../components/destinations/DestinationFilter";
-import { booking } from "../data/bookingData";
+import { filterDestinations } from "../utils/filterDestinations";
+import { FilterDrawer } from "../components/destinations/FilterDrawer";
+import { destinations } from "../data/destinations";
 
 export const Destination = () => {
   const [searchParams] = useSearchParams();
@@ -22,7 +24,7 @@ export const Destination = () => {
     minRating: 0,
   });
 
-  const { sortBy, category, region, activity, maxPrice, minRating } = filters;
+  const { sortBy, category, region, maxPrice, minRating } = filters;
 
   const updateFilter = (key, value) => {
     setFilters((prev) => ({
@@ -31,56 +33,9 @@ export const Destination = () => {
     }));
   };
 
-  const categories = useMemo(
-    () => ["All", ...new Set(booking.map((d) => d.category))],
-    [],
-  );
-  const regions = useMemo(
-    () => ["All", ...new Set(booking.map((d) => d.region))],
-    [],
-  );
-
-  const filteredDestinations = useMemo(() => {
-    const result = booking.filter((destination) => {
-      const matchesCategory =
-        category === "All" || destination.category === category;
-
-      const matchesRegion = region === "All" || destination.region === region;
-
-      const matchesActivity =
-        activity === "All" || destination.activities.includes(activity);
-
-      const matchesPrice = destination.price <= maxPrice;
-
-      const matchesRating = destination.rating >= minRating;
-
-      return (
-        `${destination.name} ${destination.title} ${destination.location}`.toLowerCase().includes(query) &&
-        matchesCategory &&
-        matchesRegion &&
-        matchesActivity &&
-        matchesPrice &&
-        matchesRating
-      );
-    });
-
-    return [...result].sort((a, b) => {
-      switch (sortBy) {
-        case "Price Low-High":
-          return a.price - b.price;
-
-        case "Price High-Low":
-          return b.price - a.price;
-
-        case "Rating":
-          return b.rating - a.rating;
-
-        case "Popularity":
-        default:
-          return b.reviews - a.reviews;
-      }
-    });
-  }, [category, region, activity, maxPrice, minRating, sortBy, query]);
+  const categories = ["All", ...new Set(destinations.map((item) => item.category))];
+  const regions = ["All", ...new Set(destinations.map((item) => item.region))];
+  const filteredDestinations = filterDestinations(destinations, { ...filters, query });
 
   const filterProps = {
     sortBy,
@@ -107,7 +62,8 @@ export const Destination = () => {
       <div className="w-full">
         {/* Section Header */}
         <SectionTitle
-          title="Total Destinations"
+          as="h1"
+          title="Destinations"
           description="Find your own destination to choose your next journey and enjoy your journey with us"
           className="mb-6 text-slate-800 md:flex justify-between items-center"
         />
@@ -116,7 +72,7 @@ export const Destination = () => {
         <div className="mb-4 flex justify-end md:hidden">
           <button
             onClick={() => setIsFilterOpen(true)}
-            className="flex items-center gap-2 rounded-full bg-[#28364c] px-4 py-2 text-sm font-semibold text-white shadow-md"
+            className="flex items-center gap-2 rounded-full bg-brand px-4 py-2 text-sm font-semibold text-white shadow-md"
           >
             <FaSlidersH />
             <span>Filter & Sort</span>
@@ -152,25 +108,13 @@ export const Destination = () => {
         </div>
       </div>
 
-      {/* Mobile Drawer */}
-      {isFilterOpen && (
-        <div className="fixed inset-0 z-50 flex justify-end bg-black/50 backdrop-blur-sm md:hidden">
-          <div className="h-full w-4/5 max-w-xs overflow-y-auto bg-white p-6 shadow-2xl">
-            <DestinationFilter
-              {...filterProps}
-              isMobile
-              onClose={() => setIsFilterOpen(false)}
-            />
-
-            <button
-              onClick={() => setIsFilterOpen(false)}
-              className="mt-6 w-full rounded-full bg-[#28364c] py-3 text-sm font-semibold text-white"
-            >
-              Apply Filters
-            </button>
-          </div>
-        </div>
-      )}
+      <FilterDrawer open={isFilterOpen} onClose={() => setIsFilterOpen(false)}>
+        <DestinationFilter {...filterProps} isMobile onClose={() => setIsFilterOpen(false)} />
+        <button type="button" onClick={() => setIsFilterOpen(false)}
+          className="mt-6 w-full rounded-full bg-brand py-3 text-sm font-semibold text-white">
+          Apply Filters
+        </button>
+      </FilterDrawer>
     </section>
   );
 };

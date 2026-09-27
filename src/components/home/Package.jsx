@@ -1,7 +1,7 @@
 import { Button } from "../common/Button";
-import { PopularCard } from "./PopularCard";
-import Boudha from "../../assets/popular/Boudhanath.jpg"
-import BaseCamp from "../../assets/popular/BaseCamp.jpg"
+import { PackageCard } from "./PackageCard";
+import Boudha from "../../assets/popular/Boudhanath.webp"
+import BaseCamp from "../../assets/popular/BaseCamp.webp"
 import { ImBasecamp } from "react-icons/im";
 import { MdTempleBuddhist } from "react-icons/md";
 
@@ -44,7 +44,7 @@ export const Package = () => {
 
           {/* Package Cards */}
           {packageData.map((item) => (
-            <PopularCard key={item.id} package={item} />
+            <PackageCard key={item.id} package={item} />
           ))}
         </div>
       </div>

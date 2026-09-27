@@ -1,8 +1,8 @@
 
-export const SectionTitle = ({ title, description, className }) => {
+export const SectionTitle = ({ title, description, className, as: Heading = "h2" }) => {
   return (
     <div className={className}>
-      <h2 className="font-heading text-2xl md:text-3xl">{title}</h2>
+      <Heading className="font-heading text-2xl md:text-3xl">{title}</Heading>
       {description && <p className="mt-4 max-w-xl leading-6">{description}</p>}
     </div>
   );

@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useBookingStore } from "../../store/useBookingStore";
-import { Input } from "./ui/Input";
+import { InputField } from "../common/InputField";
 import { sendBookingConfirmation } from "../../services/emailService.js";
 import { earliestBookingDate, latestBookingDate } from "../../utils/date.js";
 import { useShallow } from "zustand/shallow";
@@ -120,7 +120,7 @@ export function ConfirmationStep({ addOns = [] }) {
         <h3 className="text-xs font-bold text-slate-900 uppercase tracking-wider">
           Lead Traveler Information
         </h3>
-        <Input
+        <InputField
           label="Full Name"
           placeholder="e.g. John Doe"
           value={travelerInfo.fullName}
@@ -128,7 +128,7 @@ export function ConfirmationStep({ addOns = [] }) {
           required
         />
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-          <Input
+          <InputField
             label="Email Address"
             type="email"
             placeholder="anil@example.com"
@@ -136,7 +136,7 @@ export function ConfirmationStep({ addOns = [] }) {
             onChange={(e) => updateTravelerInfo("email", e.target.value)}
             required
           />
-          <Input
+          <InputField
             label="Phone Number"
             type="tel"
             placeholder="+977 9800000000"
@@ -145,7 +145,7 @@ export function ConfirmationStep({ addOns = [] }) {
             required
           />
         </div>
-        <Input
+        <InputField
           label="Target Departure Date"
           type="date"
           min={earliestBookingDate()}

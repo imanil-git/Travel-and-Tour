@@ -1,5 +1,5 @@
 import { create } from "zustand";
-import { booking } from "../data/bookingData";
+import { destinations } from "../data/destinations";
 
 const createTravelerInfo = () => ({
   fullName: "",
@@ -10,7 +10,7 @@ const createTravelerInfo = () => ({
 
 const createInitialBooking = () => ({
   step: 1,
-  selectedDestination: booking[0],
+  selectedDestination: destinations[0],
   guests: 1,
   selectedAddOns: [],
   travelerInfo: createTravelerInfo(),
