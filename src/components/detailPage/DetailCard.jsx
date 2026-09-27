@@ -2,7 +2,7 @@ import { useNavigate } from "react-router-dom";
 import { useBookingStore } from "../../store/useBookingStore";
 import { Calendar, ShieldCheck } from "lucide-react";
 import { DetailSummary } from "./DetailSummary";
-import { TravelerCounter } from "./TravelerCounter";
+import { TravelerCounter } from "../common/TravelerCounter";
 import { ContactOptions } from "./ContactOptions";
 import { earliestBookingDate, latestBookingDate } from "../../utils/date";
 
@@ -35,13 +35,13 @@ export const DetailCard = ({
     <div className="bg-white rounded-2xl shadow-lg p-6 sticky top-24">
       {/* PRICE */}
       <div className="mb-6">
-        <span className="text-sm text-[#433833]">Starting from</span>
+        <span className="text-sm text-muted">Starting from</span>
 
         <div className="flex items-end gap-1">
-          <span className="text-3xl font-bold text-[#3A2D26]">
+          <span className="text-3xl font-bold text-ink">
             Rs. {bookingData.price.toLocaleString()}
           </span>
-          <span className="text-sm text-[#433833]">/ person</span>
+          <span className="text-sm text-muted">/ person</span>
         </div>
       </div>
 
@@ -52,7 +52,7 @@ export const DetailCard = ({
         <div>
           <label
             htmlFor="detail-travel-date"
-            className="block text-sm font-medium text-[#433833] mb-2"
+            className="block text-sm font-medium text-muted mb-2"
           >
             <Calendar className="inline w-4 h-4 mr-1.5" /> Travel Date
           </label>
@@ -64,7 +64,7 @@ export const DetailCard = ({
             min={earliestBookingDate()}
             max={latestBookingDate()}
             onChange={(event) => setTravelDate(event.target.value)}
-            className="w-full px-4 py-2.5 border border-[#D7CDC2] rounded-xl focus:outline-none focus:border-[#28364c] transition-colors"
+            className="w-full px-4 py-2.5 border border-line rounded-xl focus:outline-none focus:border-brand transition-colors"
           />
         </div>
 
@@ -76,10 +76,10 @@ export const DetailCard = ({
         />
 
         {/* TOTAL */}
-        <div className="border-t border-[#D7CDC2] pt-4">
+        <div className="border-t border-line pt-4">
           <div className="flex justify-between items-center">
-            <span className="text-[#433833]">Total</span>
-            <span className="text-2xl font-bold text-[#3A2D26]">
+            <span className="text-muted">Total</span>
+            <span className="text-2xl font-bold text-ink">
               Rs. {total.toLocaleString()}
             </span>
           </div>
@@ -90,13 +90,13 @@ export const DetailCard = ({
           type="button"
           disabled={!isTravelDateValid}
           onClick={handleCustomizeTrip}
-          className="w-full bg-[#28364c] text-white py-3 rounded-xl font-medium hover:bg-[#3A2D26] transition-all duration-300 hover:shadow-lg disabled:cursor-not-allowed"
+          className="w-full bg-brand text-white py-3 rounded-xl font-medium hover:bg-ink transition-all duration-300 hover:shadow-lg disabled:cursor-not-allowed"
         >
           Customize Trip
         </button>
 
         {/* SECURITY */}
-        <div className="flex items-center justify-center gap-2 text-sm text-[#433833]">
+        <div className="flex items-center justify-center gap-2 text-sm text-muted">
           <ShieldCheck className="w-4 h-4 text-green-500" />
 
           <span>Preview your trip before reserving</span>

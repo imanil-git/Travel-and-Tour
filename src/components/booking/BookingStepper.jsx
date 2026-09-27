@@ -19,17 +19,17 @@ export function BookingStepper() {
 
         return (
           <React.Fragment key={s.id}>
-            <div className="flex items-center space-x-2">
-              <div className={`w-7 h-7 rounded-full text-xs font-bold flex items-center justify-center transition-all ${
+            <div className="flex min-w-0 flex-1 flex-col items-center gap-2 sm:flex-row">
+              <div className={`w-7 h-7 shrink-0 rounded-full text-xs font-bold flex items-center justify-center transition-all ${
                 isDone ? 'bg-slate-900 text-white' : isCurrent ? 'bg-slate-900 text-white ring-4 ring-slate-100' : 'bg-slate-100 text-slate-400'
               }`}>
                 {isDone ? <Check className="w-3.5 h-3.5 stroke-[3]" /> : s.id}
               </div>
-              <span className={`text-xs font-semibold ${isCurrent ? 'text-slate-900' : 'text-slate-400'}`}>
+              <span className={`text-center text-[10px] sm:text-xs font-semibold ${isCurrent ? 'text-slate-900' : 'text-slate-400'}`}>
                 {s.title}
               </span>
             </div>
-            {idx < STEPS.length - 1 && <div className="h-0.5 flex-1 mx-3 bg-slate-200"></div>}
+            {idx < STEPS.length - 1 && <div className="h-0.5 w-3 shrink-0 mx-1 sm:flex-1 sm:mx-3 bg-slate-200"></div>}
           </React.Fragment>
         );
       })}

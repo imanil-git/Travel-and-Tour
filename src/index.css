@@ -1,5 +1,11 @@
 @import "tailwindcss";
 @theme {
+  --font-heading: ui-sans-serif, system-ui, sans-serif;
+  --color-brand: #28364c;
+  --color-ink: #3a2d26;
+  --color-muted: #433833;
+  --color-sand: #faf8f5;
+  --color-line: #d7cdc2;
   --font-valve: ui-sans-serif, system-ui, sans-serif;
   --font-value: ui-sans-serif, system-ui, sans-serif;
 }

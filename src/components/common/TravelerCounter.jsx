@@ -13,10 +13,10 @@ export const TravelerCounter = ({ travelers, setTravelers, maxTravelers }) => {
   };
   return (
     <div>
-      <label className="block text-sm font-medium text-[#433833] mb-2">
+      <p className="block text-sm font-medium text-muted mb-2">
         <Users className="inline w-4 h-4 mr-1.5" />
         Travelers
-      </label>
+      </p>
 
       <div className="flex items-center gap-3">
         <button
@@ -24,11 +24,11 @@ export const TravelerCounter = ({ travelers, setTravelers, maxTravelers }) => {
           aria-label="Remove traveler"
           onClick={decrease}
           disabled={travelers <= 1}
-          className="w-10 h-10 rounded-full border border-[#28364c] flex items-center justify-center hover:border-[#433833] hover:bg-[#433833] hover:text-white transition-colors disabled:opacity-40 disabled:cursor-not-allowed"
+          className="w-10 h-10 rounded-full border border-brand flex items-center justify-center hover:border-muted hover:bg-muted hover:text-white transition-colors disabled:opacity-40 disabled:cursor-not-allowed"
         >
           <Minus className="w-4 h-4" />
         </button>
-        <span className="text-lg font-semibold text-[#3A2D26] w-12 text-center">
+        <span className="text-lg font-semibold text-ink w-12 text-center">
           {travelers}
         </span>
         <button
@@ -36,7 +36,7 @@ export const TravelerCounter = ({ travelers, setTravelers, maxTravelers }) => {
           aria-label="Add traveler"
           onClick={increase}
           disabled={travelers >= maxTravelers}
-          className="w-10 h-10 rounded-full border border-[#28364c] flex items-center justify-center hover:border-[#433833] hover:bg-[#433833] hover:text-white transition-colors disabled:opacity-40 disabled:cursor-not-allowed"
+          className="w-10 h-10 rounded-full border border-brand flex items-center justify-center hover:border-muted hover:bg-muted hover:text-white transition-colors disabled:opacity-40 disabled:cursor-not-allowed"
         >
           <Plus className="w-4 h-4" />
         </button>

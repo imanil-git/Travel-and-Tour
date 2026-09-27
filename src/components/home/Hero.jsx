@@ -1,4 +1,4 @@
-import HeroImage from "../../assets/HeroPic.jpg";
+import HeroImage from "../../assets/HeroPic.webp";
 import { Button } from "../common/Button";
 
 export const Hero = () => {
@@ -11,9 +11,9 @@ export const Hero = () => {
     >
       <div className="flex min-h-[70vh] items-center justify-center">
         <div className="flex flex-col items-start text-center gap-2">
-          <span className="text-white uppercase text-5xl font-extrabold sm:text-7xl lg:text-8xl">
+          <h1 className="text-white uppercase text-5xl font-extrabold sm:text-7xl lg:text-8xl">
             Discover Nepal
-          </span>
+          </h1>
           <p className="text-white max-w-xl text-sm sm:text-base text-left">
             Discover breathtaking destinations across Nepal with curated
             tours and local insights and hassle-free planning all in one

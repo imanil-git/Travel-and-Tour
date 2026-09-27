@@ -9,7 +9,7 @@ export const Button = ({
   ...props
 }) => {
   const styles = {
-    primary: "bg-[#28364c] border-[#28364c] text-white p-3 hover:bg-slate-700",
+    primary: "bg-brand border-brand text-white p-3 hover:bg-slate-700",
     secondary: "bg-white border-white text-slate-900 p-3 hover:bg-slate-100",
     tertiary: "text-white border-white/60 p-2.5 hover:bg-white/10",
   };

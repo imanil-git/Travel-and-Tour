@@ -1,7 +1,7 @@
 export const DetailTabs = ({ activeTab, setActiveTab }) => {
   const tabs = ["overview", "includes", "itinerary"];
   return (
-    <div className="border-b border-[#D7CDC2] mb-6">
+    <div className="border-b border-line mb-6">
       <div className="flex gap-5 sm:gap-7">
         {tabs.map((tab) => {
           const isActive = activeTab === tab;
@@ -12,8 +12,8 @@ export const DetailTabs = ({ activeTab, setActiveTab }) => {
               onClick={() => setActiveTab(tab)}
               className={`pb-3 text-sm font-medium capitalize transition-colors duration-300 border-b-2 ${
                 isActive
-                  ? "text-[#28364c] border-[#28364c]"
-                  : "text-[#433833] border-transparent hover:text-[#28364c]"
+                  ? "text-brand border-brand"
+                  : "text-muted border-transparent hover:text-brand"
               }`}
             >
               {tab}

@@ -1,3 +1,4 @@
+import { TravelerCounter } from "../common/TravelerCounter";
 import { Check } from "lucide-react";
 import { useBookingStore } from "../../store/useBookingStore";
 import { useShallow } from "zustand/shallow";
@@ -35,27 +36,8 @@ export function CustomizerStep({ addOns }) {
             Adjust the total group count for pricing
           </p>
         </div>
-        <div className="flex items-center space-x-3 bg-slate-50 p-1.5 rounded-full border border-slate-200">
-          <button
-            aria-label="Remove traveler"
-            disabled={guests <= 1}
-            onClick={() => setGuests(Math.max(1, guests - 1))}
-            className="w-7 h-7 bg-white rounded-full font-bold text-xs shadow-sm"
-          >
-            -
-          </button>
-          <span className="text-xs font-bold text-slate-900 w-4 text-center">
-            {guests}
-          </span>
-          <button
-            aria-label="Add traveler"
-            disabled={guests >= selectedDestination.groupSize}
-            onClick={() => setGuests(guests + 1)}
-            className="w-7 h-7 bg-white rounded-full font-bold text-xs shadow-sm"
-          >
-            +
-          </button>
-        </div>
+        <TravelerCounter travelers={guests} setTravelers={setGuests}
+          maxTravelers={selectedDestination.groupSize} />
       </div>
 
       {/* Add-ons List */}

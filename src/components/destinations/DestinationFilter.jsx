@@ -35,7 +35,7 @@ export const DestinationFilter = ({
 
       {/* Sort */}
       <div>
-        <label className="mb-2 block text-xl font-extrabold text-[#28364c]">
+        <label className="mb-2 block text-xl font-extrabold text-brand">
           Sort By
         </label>
 
@@ -56,7 +56,7 @@ export const DestinationFilter = ({
                 value={option}
                 checked={sortBy === option}
                 onChange={(e) => setSortBy(e.target.value)}
-                className="accent-[#28364c]"
+                className="accent-brand"
               />
 
               {option}
@@ -67,7 +67,7 @@ export const DestinationFilter = ({
 
       {/* Category */}
       <div>
-        <label className="mb-2 block text-xl font-extrabold text-[#28364c]">
+        <label className="mb-2 block text-xl font-extrabold text-brand">
           Destination Type
         </label>
 
@@ -83,7 +83,7 @@ export const DestinationFilter = ({
                 value={category}
                 checked={selectedCategory === category}
                 onChange={(e) => setSelectedCategory(e.target.value)}
-                className="accent-[#28364c]"
+                className="accent-brand"
               />
 
               {category === "All" ? "All Types" : category}
@@ -94,7 +94,7 @@ export const DestinationFilter = ({
 
       {/* Region */}
       <div>
-        <label className="mb-2 block text-xl font-extrabold text-[#28364c]">
+        <label className="mb-2 block text-xl font-extrabold text-brand">
           Region
         </label>
 
@@ -110,7 +110,7 @@ export const DestinationFilter = ({
                 value={region}
                 checked={selectedRegion === region}
                 onChange={(e) => setSelectedRegion(e.target.value)}
-                className="accent-[#28364c]"
+                className="accent-brand"
               />
 
               {region === "All" ? "All Regions" : region}
@@ -121,10 +121,10 @@ export const DestinationFilter = ({
 
       {/* Price */}
       <div>
-        <div className="mb-2 flex justify-between text-xl font-extrabold text-[#28364c]">
+        <div className="mb-2 flex justify-between text-xl font-extrabold text-brand">
           <span>Price Range</span>
 
-          <span className="text-[#28364c]">
+          <span className="text-brand">
             NPR {maxPrice.toLocaleString()}
           </span>
         </div>
@@ -137,13 +137,13 @@ export const DestinationFilter = ({
           step="500"
           value={maxPrice}
           onChange={(e) => setMaxPrice(Number(e.target.value))}
-          className="w-full cursor-pointer accent-[#28364c]"
+          className="w-full cursor-pointer accent-brand"
         />
       </div>
 
       {/* Rating */}
       <div>
-        <label className="mb-2 block text-xl font-extrabold text-[#28364c]">
+        <label className="mb-2 block text-xl font-extrabold text-brand">
           Rating
         </label>
 
@@ -159,7 +159,7 @@ export const DestinationFilter = ({
                 value={rating}
                 checked={minRating === rating}
                 onChange={() => setMinRating(rating)}
-                className="accent-[#28364c]"
+                className="accent-brand"
               />
 
               {rating === 0 ? "All ratings" : `★ ${rating} & above`}

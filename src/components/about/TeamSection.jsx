@@ -1,4 +1,4 @@
-import LandScape from "../../assets/Team Member/Landscape.jpg";
+import LandScape from "../../assets/Team Member/Landscape.webp";
 
 export const TeamSection = () => {
   return (
@@ -37,9 +37,9 @@ export const TeamSection = () => {
               Made for curious travelers
             </span>
 
-            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-heading mb-6">
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-heading mb-6">
               Every journey starts with curiosity
-            </h1>
+            </h2>
 
             <p className="max-w-2xl text-base sm:text-lg lg:text-xl leading-relaxed text-gray-100">
               A memorable journey begins with thoughtful planning. Explore our destination guides, compare the experiences that matter to you and build a trip around your interests.

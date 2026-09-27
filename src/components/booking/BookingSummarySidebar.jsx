@@ -9,13 +9,6 @@ export function BookingSummarySidebar({ addOns }) {
     addOnsTotal,
     grandTotal,
   } = useBookingSummary(addOns);
-  console.log(
-    "slectedDestination:",
-    selectedDestination,
-    guests,
-    selectedAddOns,
-  );
-  console.log("Total:", baseTotal, addOnsTotal, grandTotal);
 
   return (
     <div className="bg-white rounded-3xl p-6 border border-slate-200 sticky top-28 space-y-6">
